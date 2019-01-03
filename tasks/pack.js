@@ -1,5 +1,6 @@
 import gulp from 'gulp'
-import { colors, log } from 'gulp-util'
+import c from 'ansi-colors'
+import log from 'fancy-log'
 import zip from 'gulp-zip'
 import packageDetails from '../package.json'
 import args from './lib/args'
@@ -22,8 +23,8 @@ gulp.task('pack', gulp.series('build', () => {
     .pipe(zip(filename))
     .pipe(gulp.dest('./packages'))
     .on('end', () => {
-      let distStyled = colors.magenta(`dist/${args.vendor}`)
-      let filenameStyled = colors.magenta(`./packages/${filename}`)
+      let distStyled = c.magenta(`dist/${args.vendor}`)
+      let filenameStyled = c.magenta(`./packages/${filename}`)
       log(`Packed ${distStyled} to ${filenameStyled}`)
     })
 }))

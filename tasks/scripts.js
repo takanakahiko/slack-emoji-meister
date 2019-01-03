@@ -1,6 +1,7 @@
 import gulp from 'gulp'
 import gulpif from 'gulp-if'
-import { log, colors } from 'gulp-util'
+import c from 'ansi-colors'
+import log from 'fancy-log'
 import named from 'vinyl-named'
 import webpack from 'webpack'
 import gulpWebpack from 'webpack-stream'
@@ -18,13 +19,11 @@ gulp.task('scripts', (cb) => {
     }))
     .pipe(named())
     .pipe(gulpWebpack({
+      mode: ENV,
       devtool: args.sourcemaps ? 'inline-source-map' : false,
       watch: args.watch,
       plugins: [
-        new webpack.DefinePlugin({
-          'process.env.NODE_ENV': JSON.stringify(ENV),
-          'process.env.VENDOR': JSON.stringify(args.vendor)
-        })
+        new webpack.DefinePlugin({ 'process.env.VENDOR': JSON.stringify(args.vendor) })
       ].concat(args.production ? [
         new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin()
@@ -49,7 +48,7 @@ gulp.task('scripts', (cb) => {
     webpack,
     (err, stats) => {
       if (err) return
-      log(`Finished '${colors.cyan('scripts')}'`, stats.toString({
+      log(`Finished '${c.cyan('scripts')}'`, stats.toString({
         chunks: false,
         colors: true,
         cached: false,

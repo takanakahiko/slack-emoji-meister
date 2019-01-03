@@ -1,6 +1,7 @@
 import gulp from 'gulp'
 import gulpif from 'gulp-if'
-import gutil from 'gulp-util'
+import c from 'ansi-colors'
+import log from 'fancy-log'
 import sourcemaps from 'gulp-sourcemaps'
 import less from 'gulp-less'
 import sass from 'gulp-sass'
@@ -21,7 +22,7 @@ gulp.task('styles:less', function () {
   return gulp.src('app/styles/*.less')
     .pipe(gulpif(args.sourcemaps, sourcemaps.init()))
     .pipe(less({ paths: ['./app'] }).on('error', function (error) {
-      gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message))
+      log(c.red('Error (' + error.plugin + '): ' + error.message))
       this.emit('end')
     }))
     .pipe(gulpif(args.production, cleanCSS()))
@@ -34,7 +35,7 @@ gulp.task('styles:sass', function () {
   return gulp.src('app/styles/*.scss')
     .pipe(gulpif(args.sourcemaps, sourcemaps.init()))
     .pipe(sass({ includePaths: ['./app'] }).on('error', function (error) {
-      gutil.log(gutil.colors.red('Error (' + error.plugin + '): ' + error.message))
+      log(c.red('Error (' + error.plugin + '): ' + error.message))
       this.emit('end')
     }))
     .pipe(gulpif(args.production, cleanCSS()))
