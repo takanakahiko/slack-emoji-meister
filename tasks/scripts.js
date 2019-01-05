@@ -25,7 +25,6 @@ gulp.task('scripts', (cb) => {
       plugins: [
         new webpack.DefinePlugin({ 'process.env.VENDOR': JSON.stringify(args.vendor) })
       ].concat(args.production ? [
-        new webpack.optimize.UglifyJsPlugin(),
         new webpack.optimize.ModuleConcatenationPlugin()
       ] : []),
       module: {
