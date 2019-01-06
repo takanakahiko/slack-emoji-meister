@@ -1,7 +1,7 @@
 {
   "name": "slack-emoji-meister",
   "private": true,
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "scripts": {
     "start": "npm run dev:chrome",
