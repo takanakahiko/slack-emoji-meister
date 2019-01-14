@@ -51,5 +51,6 @@
     "http://*/*",
     "https://*/*",
     "file://*/*"
-  ]
+  ],
+  "homepage_url": "https://takanakahiko.me/slack-emoji-meister/"
 }
