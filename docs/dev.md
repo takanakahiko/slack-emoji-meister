@@ -2,7 +2,9 @@
 
 ## Installation
 
-	$ npm install
+```bash
+$ npm install
+```
 
 ## Usage
 
@@ -29,30 +31,6 @@ There are two kinds of entryfiles that create bundles.
 | `--verbose`    | Log additional data to the console.                                                                                                                   |
 | `--vendor`     | Compile the extension for different vendors (chrome, firefox, opera, edge)  Default: chrome                                                                 |
 | `--sourcemaps` | Force the creation of sourcemaps. Default: !production                                                                                                |
-
-
-### pack
-
-Zips your `dist` directory and saves it in the `packages` directory.
-
-    $ gulp pack --vendor=firefox
-
-### Version
-
-Increments version number of `manifest.json` and `package.json`,
-commits the change to git and adds a git tag.
-
-
-    $ gulp patch      // => 0.0.X
-
-or
-
-    $ gulp feature    // => 0.X.0
-
-or
-
-    $ gulp release    // => X.0.0
-
 
 ## Globals
 
