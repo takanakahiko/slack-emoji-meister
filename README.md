@@ -4,16 +4,16 @@ You can easily add slack emoji
 
 ## Usage
 
-[Official page](https://takanakahiko.me/slack-emoji-meistar)
+[Official page](https://takanakahiko.me/slack-emoji-meister)
 
 ## Constributing
 
-[contributing.md](./github/contributing.md)
+[contributing.md](https://github.com/takanakahiko/slack-emoji-meister/blob/master/.github/CONTRIBUTING.md)
 
-## Developing
+## Developer's guide
 
-[dev.md](./doc/dev.md)
+[Developer's guide](https://takanakahiko.me/slack-emoji-meister/dev)
 
-## Guide for Maintainer
+## Maintainer's guide
 
-[maintainer.md](./doc/maintainer.md)
+[maintainer.md](https://takanakahiko.me/slack-emoji-meister/maintainer)
