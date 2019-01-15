@@ -14,5 +14,17 @@
   "browserActionTitle": {
     "message": "slack emoji meister",
     "description": "The title of the browser action button"
+  },
+  "contextMenuTitle": {
+    "message": "add slack emoji",
+    "description": "The title of context menu"
+  },
+  "promptTeamName": {
+    "message": "Give your slack team name.",
+    "description": "The slack team name of prompt message"
+  },
+  "promptEmojiName": {
+    "message": "Give your emoji a name.",
+    "description": "The slack emoji name of prompt message"
   }
 }

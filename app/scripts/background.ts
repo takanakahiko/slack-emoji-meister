@@ -10,8 +10,8 @@ import {
 const onClickContextMenus = async (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab) => {
   if( !info.srcUrl ) return;
   const image_url = info.srcUrl;
-  const team_name = prompt("Give your slack team name.") || '';
-  const emoji_name = prompt("Give your emoji a name.") || '';
+  const team_name = prompt(chrome.i18n.getMessage('promptTeamName')) || '';
+  const emoji_name = prompt(chrome.i18n.getMessage('promptEmojiName')) || '';
   const session_info = await getSessionInfo(team_name)
   if(!session_info) return openLoginForm(team_name)
   await uploadEmoji(team_name, emoji_name , image_url, session_info)
@@ -20,7 +20,7 @@ const onClickContextMenus = async (info: chrome.contextMenus.OnClickData, tab: c
 chrome.runtime.onInstalled.addListener((details) => {
   console.log('previousVersion', details.previousVersion);
   chrome.contextMenus.create({
-    title: 'add slack emoji',
+    title: chrome.i18n.getMessage('contextMenuTitle'),
     contexts: ['image'],
     onclick: onClickContextMenus
   });
