@@ -6,7 +6,7 @@ You can easily add slack emoji
 
 [Official page](https://takanakahiko.me/slack-emoji-meister)
 
-## Constributing
+## Contributing
 
 [contributing.md](https://github.com/takanakahiko/slack-emoji-meister/blob/master/.github/CONTRIBUTING.md)
 
