@@ -15,7 +15,7 @@
     "dev:firefox": "gulp --watch --vendor=firefox",
     "dev:opera": "gulp --watch --vendor=opera",
     "dev:edge": "gulp --watch --vendor=edge",
-    "lint": "standard && tslint ./app/scripts/**/*.ts --fix"
+    "lint": "standard && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix"
   },
   "standard": {
     "globals": [
