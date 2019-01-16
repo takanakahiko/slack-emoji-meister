@@ -8,7 +8,7 @@
     "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
   },
   "appDescription": {
-    "message": "You can easily add slack emoji.",
+    "message": "Slackの絵文字を簡単に追加できます",
     "description": "The description of the application"
   },
   "browserActionTitle": {
@@ -16,15 +16,15 @@
     "description": "The title of the browser action button"
   },
   "contextMenuTitle": {
-    "message": "add slack emoji",
+    "message": "画像をSlackの絵文字に追加",
     "description": "The title of context menu"
   },
   "promptTeamName": {
-    "message": "Give your slack team name.",
+    "message": "Slackチーム名を入力してください",
     "description": "The slack team name of prompt message"
   },
   "promptEmojiName": {
-    "message": "Give your emoji a name.",
+    "message": "絵文字名を入力してください",
     "description": "The slack emoji name of prompt message"
   }
 }
