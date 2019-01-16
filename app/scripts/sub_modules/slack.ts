@@ -8,23 +8,25 @@ interface SessionInfo {
 
 export const getSessionInfo = async (teamName: string): Promise<SessionInfo | undefined> => {
     const emojiCustomizeUrl = 'https://' + teamName + '.slack.com/customize/emoji'
-    const ret = await httpGet(emojiCustomizeUrl)
+    const response = await httpGet(emojiCustomizeUrl)
 
-    if (ret.responseURL !== emojiCustomizeUrl) {
+    if (response.url !== emojiCustomizeUrl) {
         return
     }
 
-    const apiTokenMatches = ret.responseText.match(/api_token: "(.+?)"/)
+    const responseText = await response.text()
+
+    const apiTokenMatches = responseText.match(/api_token: "(.+?)"/)
     if (!apiTokenMatches || !apiTokenMatches[1]) {
         return
     }
 
-    const versionUidMatches = ret.responseText.match(/version_uid: "(.+?)"/)
+    const versionUidMatches = responseText.match(/version_uid: "(.+?)"/)
     if (!versionUidMatches || !versionUidMatches[1]) {
         return
     }
 
-    const versionTsMatches = ret.responseText.match(/version_ts: "(.+?)"/)
+    const versionTsMatches = responseText.match(/version_ts: "(.+?)"/)
     if (!versionTsMatches || !versionTsMatches[1]) {
         return
     }
@@ -56,9 +58,8 @@ export const uploadEmoji = async (teamName: string, emojiName: string, imageUrl:
         image: await getBase64Image(imageUrl),
         token: sessionInfo.api_token,
     }
-    const header = {}
-    const ret = await httpPostForm(emojiCustomizeUrl, formData, header)
-    if (JSON.parse(ret.responseText).ok) {
+    const response = await httpPostForm(emojiCustomizeUrl, formData)
+    if ((await response.json()).ok) {
         return true
     }
     return false
