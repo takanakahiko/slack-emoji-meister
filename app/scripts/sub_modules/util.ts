@@ -1,5 +1,9 @@
-interface Headers { [s: string]: string }
-interface Data { [s: string]: string | Blob }
+interface Headers {
+  [s: string]: string
+}
+interface Data {
+  [s: string]: string | Blob
+}
 
 export const httpGet = async (url: string, headers: Headers = {}) => {
   return fetch(url, {
@@ -8,7 +12,11 @@ export const httpGet = async (url: string, headers: Headers = {}) => {
   })
 }
 
-export const httpPostForm = async (url: string, data: Data, headers: Headers = {}) => {
+export const httpPostForm = async (
+  url: string,
+  data: Data,
+  headers: Headers = {},
+) => {
   const formData = new FormData()
   for (const key of Object.keys(data)) {
     formData.append(key, data[key])

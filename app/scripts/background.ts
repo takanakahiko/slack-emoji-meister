@@ -1,13 +1,12 @@
 // Enable chromereload by uncommenting this line:
 // import 'chromereload/devonly'
 
-import {
-  getSessionInfo,
-  openLoginForm,
-  uploadEmoji,
-} from './sub_modules/slack'
+import { getSessionInfo, openLoginForm, uploadEmoji } from './sub_modules/slack'
 
-const onClickContextMenus = async (info: chrome.contextMenus.OnClickData, tab: chrome.tabs.Tab) => {
+const onClickContextMenus = async (
+  info: chrome.contextMenus.OnClickData,
+  tab: chrome.tabs.Tab,
+) => {
   if (!info.srcUrl) {
     return
   }
@@ -18,7 +17,7 @@ const onClickContextMenus = async (info: chrome.contextMenus.OnClickData, tab: c
   if (!sessionInfo) {
     return openLoginForm(teamName)
   }
-  await uploadEmoji(teamName, emojiName , imageUrl, sessionInfo)
+  await uploadEmoji(teamName, emojiName, imageUrl, sessionInfo)
 }
 
 chrome.runtime.onInstalled.addListener((details) => {
