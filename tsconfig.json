@@ -3,9 +3,9 @@
       "module": "commonjs",
       "target": "es5",
       "noImplicitAny": true,
-      "noImplicitUseStrict": true,
       "noImplicitReturns": true,
       "strictNullChecks": true,
+      "strict": true,
       "jsx": "react",
       "lib": ["dom", "es2017"]
   }
