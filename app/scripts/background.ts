@@ -11,8 +11,14 @@ const onClickContextMenus = async (
     return
   }
   const imageUrl = info.srcUrl
-  const teamName = prompt(chrome.i18n.getMessage('promptTeamName')) || ''
-  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName')) || ''
+  const teamName = prompt(chrome.i18n.getMessage('promptTeamName'))
+  if (!teamName) {
+    return
+  }
+  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
+  if (!emojiName) {
+    return
+  }
   const sessionInfo = await getSessionInfo(teamName)
   if (!sessionInfo) {
     return openLoginForm(teamName)
