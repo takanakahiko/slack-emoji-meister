@@ -32,14 +32,14 @@ const onClickContextMenus = async (
   try {
     chrome.notifications.create(`success-${Math.random()}`, {
       type: 'basic',
-      title: 'Registration success',
-      message: `:${emojiName}: is now available on ${teamName} slack.`,
+      title: chrome.i18n.getMessage('registrationSuccessTitle'),
+      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
       iconUrl: info.srcUrl
     })
   } catch (e) {
     // For non-chrome browsers
-    new Notification('Registration success', {
-      body: `:${emojiName}: is now available on ${teamName} slack.`,
+    new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
+      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
       image: info.srcUrl
     })
   }
