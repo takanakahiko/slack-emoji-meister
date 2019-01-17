@@ -23,7 +23,26 @@ const onClickContextMenus = async (
   if (!sessionInfo) {
     return openLoginForm(teamName)
   }
-  await uploadEmoji(teamName, emojiName, imageUrl, sessionInfo)
+  try {
+    await uploadEmoji(teamName, emojiName, imageUrl, sessionInfo)
+  } catch (e) {
+    console.error(e)
+    return
+  }
+  try {
+    chrome.notifications.create(`success-${Math.random()}`, {
+      type: 'basic',
+      title: chrome.i18n.getMessage('registrationSuccessTitle'),
+      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
+      iconUrl: info.srcUrl
+    })
+  } catch (e) {
+    // For non-chrome browsers
+    new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
+      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
+      image: info.srcUrl
+    })
+  }
 }
 
 chrome.runtime.onInstalled.addListener((details) => {

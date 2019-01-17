@@ -26,5 +26,13 @@
   "promptEmojiName": {
     "message": "Give your emoji a name.",
     "description": "The slack emoji name of prompt message"
+  },
+  "registrationSuccessTitle": {
+    "message": "Registration success",
+    "description": "The message of registration success notification title"
+  },
+  "registrationSuccessBody": {
+    "message": ":$1: is now available on $2 slack.",
+    "description": "The message of registration success notification"
   }
 }

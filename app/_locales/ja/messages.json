@@ -26,5 +26,13 @@
   "promptEmojiName": {
     "message": "絵文字名を入力してください",
     "description": "The slack emoji name of prompt message"
+  },
+  "registrationSuccessTitle": {
+    "message": "Registration success",
+    "description": "The message of registration success notification title"
+  },
+  "registrationSuccessBody": {
+    "message": ":$1: が $2 slack 内で利用可能となりました",
+    "description": "The message of registration success notification body"
   }
 }
