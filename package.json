@@ -30,7 +30,6 @@
     "@types/chrome": "^0.x.x",
     "@types/node": "10.12.18",
     "ansi-colors": "3.2.3",
-    "babel-loader": "8.x.x",
     "chai": "4.x.x",
     "chromereload": "0.x.x",
     "debounce": "1.x.x",
