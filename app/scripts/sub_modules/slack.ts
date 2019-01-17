@@ -41,7 +41,7 @@ export const getSessionInfo = async (
 }
 
 export const openLoginForm = (teamName: string) => {
-  alert(`Please login to https://${teamName}.slack.com`)
+  alert(chrome.i18n.getMessage('requestLogin', [teamName]))
   chrome.tabs.create({
     url: `https://${teamName}.slack.com`,
   })

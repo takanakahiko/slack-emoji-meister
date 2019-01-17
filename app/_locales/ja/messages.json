@@ -34,5 +34,9 @@
   "registrationSuccessBody": {
     "message": ":$1: が $2 slack 内で利用可能となりました",
     "description": "The message of registration success notification body"
+  },
+  "requestLogin": {
+    "message": "$1 slack にログインしてください",
+    "description": "The message of request login to slack"
   }
 }

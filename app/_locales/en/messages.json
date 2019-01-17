@@ -34,5 +34,9 @@
   "registrationSuccessBody": {
     "message": ":$1: is now available on $2 slack.",
     "description": "The message of registration success notification"
+  },
+  "requestLogin": {
+    "message": "Please login to $1 slack.",
+    "description": "The message of request login to slack"
   }
 }
