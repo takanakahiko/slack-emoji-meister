@@ -22,6 +22,7 @@ function inc (importance) {
   // get all the files to bump version in
   return gulp.src([
     'package.json',
+    'package-lock.json',
     'app/manifest.json'
   ], {
     base: './'
