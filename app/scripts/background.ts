@@ -11,11 +11,11 @@ const onClickContextMenus = async (
     return
   }
   const imageUrl = info.srcUrl
-  const teamName = prompt(chrome.i18n.getMessage('promptTeamName')) || ''
+  const teamName = prompt(chrome.i18n.getMessage('promptTeamName'))
   if (!teamName) {
     return
   }
-  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName')) || ''
+  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
   if (!emojiName) {
     return
   }
