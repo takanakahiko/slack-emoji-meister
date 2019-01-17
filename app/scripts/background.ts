@@ -25,29 +25,23 @@ const onClickContextMenus = async (
   }
   try {
     await uploadEmoji(teamName, emojiName, imageUrl, sessionInfo)
-  } catch(e) {
+  } catch (e) {
     console.error(e)
     return
   }
   try {
-    chrome.notifications.create(
-      `success-${Math.random()}`,
-      {
-        type: 'basic',
-        title: 'Registration success',
-        message: `:${emojiName}: is now available on ${teamName} slack.`,
-        iconUrl: info.srcUrl
-      }
-    )
-  } catch(e) {
+    chrome.notifications.create(`success-${Math.random()}`, {
+      type: 'basic',
+      title: 'Registration success',
+      message: `:${emojiName}: is now available on ${teamName} slack.`,
+      iconUrl: info.srcUrl
+    })
+  } catch (e) {
     // For non-chrome browsers
-    new Notification(
-      'Registration success',
-      {
-        body: `:${emojiName}: is now available on ${teamName} slack.`,
-        image: info.srcUrl
-      }
-    )
+    new Notification('Registration success', {
+      body: `:${emojiName}: is now available on ${teamName} slack.`,
+      image: info.srcUrl
+    })
   }
 }
 
