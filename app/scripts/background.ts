@@ -32,7 +32,6 @@ const addEmojiToTeam = async (imageUrl: string | undefined, givenTeamName?: stri
       message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
       iconUrl: imageUrl,
     })
-    return { teamName, emojiName, imageUrl, sessionInfo }
   } catch (e) {
     // For non-chrome browsers
     new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
@@ -40,6 +39,7 @@ const addEmojiToTeam = async (imageUrl: string | undefined, givenTeamName?: stri
       image: imageUrl,
     })
   }
+  return { teamName, emojiName, imageUrl, sessionInfo }
 }
 
 const reloadContextMenu = () => {
