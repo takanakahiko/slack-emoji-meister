@@ -1,9 +1,16 @@
 // Enable chromereload by uncommenting this line:
 // import 'chromereload/devonly'
 
-import { getSessionInfo, openLoginForm, uploadEmoji } from './sub_modules/slack'
+import { getSessionInfo, openLoginForm, uploadEmoji, SessionInfo } from './sub_modules/slack'
 
-const addEmojiToTeam = async (imageUrl: string | undefined, givenTeamName?: string) => {
+interface EmojiAddResult {
+  teamName: string
+  emojiName: string
+  imageUrl: string
+  sessionInfo: SessionInfo,
+}
+
+async function addEmojiToTeam(imageUrl: string, givenTeamName?: string): Promise<EmojiAddResult | undefined> {
   if (!imageUrl) {
     return
   }
@@ -13,7 +20,8 @@ const addEmojiToTeam = async (imageUrl: string | undefined, givenTeamName?: stri
   }
   const sessionInfo = await getSessionInfo(teamName)
   if (!sessionInfo) {
-    return openLoginForm(teamName)
+    openLoginForm(teamName)
+    return
   }
   const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
   if (!emojiName) {
@@ -58,7 +66,7 @@ const reloadContextMenu = () => {
         contexts: ['image'],
         parentId: id,
         onclick(info) {
-          addEmojiToTeam(info.srcUrl, team)
+          addEmojiToTeam(info.srcUrl!, team)
         },
       })
     }
@@ -68,7 +76,7 @@ const reloadContextMenu = () => {
       contexts: ['image'],
       parentId: id,
       async onclick(info) {
-        const result = await addEmojiToTeam(info.srcUrl)
+        const result = await addEmojiToTeam(info.srcUrl!)
         if (result && !teams.includes(result.teamName)) {
           teams.push(result.teamName)
           chrome.storage.sync.set({ teams }, () => {

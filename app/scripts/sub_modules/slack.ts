@@ -1,6 +1,6 @@
 import { httpGet, httpPostForm, getBase64Image } from './util'
 
-interface SessionInfo {
+export interface SessionInfo {
   api_token: string
   version_uid: string
   version_ts: string
