@@ -10,8 +10,8 @@ description: You can easily add slack emoji
 ## How to use
 
 1. Right click any image
-2. Select 'add slack image'
-3. Enter your slack team name
+2. Select 'add slack image' ▷ 'add to new team' or 'add to _team that already registered_'
+3. Enter your slack team name if select 'add to new team' at the above step
 4. Enter emoji name
 
 ## Develop & Contribution

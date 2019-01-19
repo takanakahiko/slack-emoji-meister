@@ -19,6 +19,19 @@
     "message": "add slack emoji",
     "description": "The title of context menu"
   },
+  "contextMenuTitleForAddEmojiToNewTeam": {
+    "message": "add to new team",
+    "description": "The title of context menu to add emoji to the new team"
+  },
+  "contextMenuTitleForAddEmojiToExistingTeam": {
+    "message": "add to $TARGET",
+    "placeholders": {
+      "target": {
+        "content": "$1"
+      }
+    },
+    "description": "The title of context menu to add emoji to the team that already registered"
+  },
   "promptTeamName": {
     "message": "Give your slack team name.",
     "description": "The slack team name of prompt message"
