@@ -19,22 +19,22 @@
     "message": "画像をSlackの絵文字に追加",
     "description": "The title of context menu"
   },
-  "contextMenuTitleForAddEmojiToNewTeam": {
-    "message": "新しいチームに追加",
-    "description": "The title of context menu to add emoji to the new team"
+  "contextMenuTitleForAddEmojiToNewWorkspace": {
+    "message": "新しいワークスペースに追加",
+    "description": "The title of context menu to add emoji to the new workspace"
   },
-  "contextMenuTitleForAddEmojiToExistingTeam": {
+  "contextMenuTitleForAddEmojiToExistingWorkspace": {
     "message": "$TARGET$ に追加",
     "placeholders": {
       "target": {
         "content": "$1"
       }
     },
-    "description": "The title of context menu to add emoji to the team that already registered"
+    "description": "The title of context menu to add emoji to the workspace that already registered"
   },
-  "promptTeamName": {
-    "message": "Slackチーム名を入力してください",
-    "description": "The slack team name of prompt message"
+  "promptWorkspaceName": {
+    "message": "Slackワークスペース名を入力してください",
+    "description": "The slack workspace name of prompt message"
   },
   "promptEmojiName": {
     "message": "絵文字名を入力してください",

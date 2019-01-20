@@ -7,9 +7,9 @@ export interface SessionInfo {
 }
 
 export const getSessionInfo = async (
-  teamName: string,
+  workspaceName: string,
 ): Promise<SessionInfo | undefined> => {
-  const emojiCustomizeUrl = `https://${teamName}.slack.com/customize/emoji`
+  const emojiCustomizeUrl = `https://${workspaceName}.slack.com/customize/emoji`
   const response = await httpGet(emojiCustomizeUrl)
 
   if (response.url !== emojiCustomizeUrl) {
@@ -40,10 +40,10 @@ export const getSessionInfo = async (
   }
 }
 
-export const openLoginForm = (teamName: string) => {
-  alert(chrome.i18n.getMessage('requestLogin', [teamName]))
+export const openLoginForm = (workspaceName: string) => {
+  alert(chrome.i18n.getMessage('requestLogin', [workspaceName]))
   chrome.tabs.create({
-    url: `https://${teamName}.slack.com`,
+    url: `https://${workspaceName}.slack.com`,
   })
 }
 
@@ -53,12 +53,12 @@ const getXId = (sessionInfo: SessionInfo): string => {
 }
 
 export const uploadEmoji = async (
-  teamName: string,
+  workspaceName: string,
   emojiName: string,
   imageUrl: string,
   sessionInfo: SessionInfo,
 ) => {
-  const emojiCustomizeUrl = `https://${teamName}.slack.com/api/emoji.add?_x_id=${getXId(
+  const emojiCustomizeUrl = `https://${workspaceName}.slack.com/api/emoji.add?_x_id=${getXId(
     sessionInfo,
   )}`
   const formData = {

@@ -4,23 +4,23 @@
 import { getSessionInfo, openLoginForm, uploadEmoji, SessionInfo } from './sub_modules/slack'
 
 interface EmojiAddResult {
-  teamName: string
+  workspaceName: string
   emojiName: string
   imageUrl: string
   sessionInfo: SessionInfo,
 }
 
-async function addEmojiToTeam(imageUrl: string, givenTeamName?: string): Promise<EmojiAddResult | undefined> {
+async function addEmojiToWorkspace(imageUrl: string, givenWorkspaceName?: string): Promise<EmojiAddResult | undefined> {
   if (!imageUrl) {
     return
   }
-  const teamName = givenTeamName || prompt(chrome.i18n.getMessage('promptTeamName'))
-  if (!teamName) {
+  const workspaceName = givenWorkspaceName || prompt(chrome.i18n.getMessage('promptWorkspaceName'))
+  if (!workspaceName) {
     return
   }
-  const sessionInfo = await getSessionInfo(teamName)
+  const sessionInfo = await getSessionInfo(workspaceName)
   if (!sessionInfo) {
-    openLoginForm(teamName)
+    openLoginForm(workspaceName)
     return
   }
   const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
@@ -28,7 +28,7 @@ async function addEmojiToTeam(imageUrl: string, givenTeamName?: string): Promise
     return
   }
   try {
-    await uploadEmoji(teamName, emojiName, imageUrl, sessionInfo)
+    await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
   } catch (e) {
     console.error(e)
     return
@@ -37,49 +37,49 @@ async function addEmojiToTeam(imageUrl: string, givenTeamName?: string): Promise
     chrome.notifications.create(`success-${Math.random()}`, {
       type: 'basic',
       title: chrome.i18n.getMessage('registrationSuccessTitle'),
-      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
+      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
       iconUrl: imageUrl,
     })
   } catch (e) {
     // For non-chrome browsers
     new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
-      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, teamName]),
+      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
       image: imageUrl,
     })
   }
-  return { teamName, emojiName, imageUrl, sessionInfo }
+  return { workspaceName, emojiName, imageUrl, sessionInfo }
 }
 
 const reloadContextMenu = () => {
-  chrome.storage.sync.get(['teams'], (storageGetResult) => {
+  chrome.storage.sync.get(['workspaces'], (storageGetResult) => {
     chrome.contextMenus.removeAll()
     const id = chrome.contextMenus.create({
       title: chrome.i18n.getMessage('contextMenuTitle'),
       contexts: ['image'],
     })
 
-    const teams: string[] = storageGetResult.teams || []
+    const workspaces: string[] = storageGetResult.workspaces || []
 
-    for (const team of teams) {
+    for (const workspace of workspaces) {
       chrome.contextMenus.create({
-        title: chrome.i18n.getMessage('contextMenuTitleForAddEmojiToExistingTeam', [team]),
+        title: chrome.i18n.getMessage('contextMenuTitleForAddEmojiToExistingWorkspace', [workspace]),
         contexts: ['image'],
         parentId: id,
         onclick(info) {
-          addEmojiToTeam(info.srcUrl!, team)
+          addEmojiToWorkspace(info.srcUrl!, workspace)
         },
       })
     }
 
     chrome.contextMenus.create({
-      title: chrome.i18n.getMessage('contextMenuTitleForAddEmojiToNewTeam'),
+      title: chrome.i18n.getMessage('contextMenuTitleForAddEmojiToNewWorkspace'),
       contexts: ['image'],
       parentId: id,
       async onclick(info) {
-        const result = await addEmojiToTeam(info.srcUrl!)
-        if (result && !teams.includes(result.teamName)) {
-          teams.push(result.teamName)
-          chrome.storage.sync.set({ teams }, () => {
+        const result = await addEmojiToWorkspace(info.srcUrl!)
+        if (result && !workspaces.includes(result.workspaceName)) {
+          workspaces.push(result.workspaceName)
+          chrome.storage.sync.set({ workspaces }, () => {
             reloadContextMenu()
           })
         }

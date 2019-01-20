@@ -19,22 +19,22 @@
     "message": "add slack emoji",
     "description": "The title of context menu"
   },
-  "contextMenuTitleForAddEmojiToNewTeam": {
-    "message": "add to new team",
-    "description": "The title of context menu to add emoji to the new team"
+  "contextMenuTitleForAddEmojiToNewWorkspace": {
+    "message": "add to new workspace",
+    "description": "The title of context menu to add emoji to the new workspace"
   },
-  "contextMenuTitleForAddEmojiToExistingTeam": {
+  "contextMenuTitleForAddEmojiToExistingWorkspace": {
     "message": "add to $TARGET",
     "placeholders": {
       "target": {
         "content": "$1"
       }
     },
-    "description": "The title of context menu to add emoji to the team that already registered"
+    "description": "The title of context menu to add emoji to the workspace that already registered"
   },
-  "promptTeamName": {
-    "message": "Give your slack team name.",
-    "description": "The slack team name of prompt message"
+  "promptWorkspaceName": {
+    "message": "Give your slack workspace name.",
+    "description": "The slack workspace name of prompt message"
   },
   "promptEmojiName": {
     "message": "Give your emoji a name.",
