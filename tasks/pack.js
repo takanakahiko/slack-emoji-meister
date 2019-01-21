@@ -2,6 +2,7 @@ import gulp from 'gulp'
 import c from 'ansi-colors'
 import log from 'fancy-log'
 import zip from 'gulp-zip'
+import rename from 'gulp-rename'
 import packageDetails from '../package.json'
 import args from './lib/args'
 
@@ -21,6 +22,10 @@ gulp.task('pack', gulp.series('build', () => {
   let filename = `${name}-${version}-${args.vendor}${filetype}`
   return gulp.src(`dist/${args.vendor}/**/*`)
     .pipe(zip(filename))
+    .pipe(gulp.dest('./packages'))
+    .pipe(rename({
+      basename: "new"
+    }))
     .pipe(gulp.dest('./packages'))
     .on('end', () => {
       let distStyled = c.magenta(`dist/${args.vendor}`)

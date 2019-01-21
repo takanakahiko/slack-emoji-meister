@@ -15,7 +15,10 @@
     "dev:firefox": "gulp --watch --vendor=firefox",
     "dev:opera": "gulp --watch --vendor=opera",
     "dev:edge": "gulp --watch --vendor=edge",
-    "lint": "standard && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix"
+    "lint": "standard && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
+    "deploy": "npm run upload-webstore && npm run publish-webstore",
+    "upload-webstore": "webstore upload --source packages/new.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN",
+    "publish-webstore": "webstore publish --extension-id elomekmlfonmdhmpmdfldcjgdoacjcba"
   },
   "standard": {
     "globals": [
@@ -31,6 +34,7 @@
     "@types/node": "10.12.18",
     "ansi-colors": "3.2.3",
     "chai": "4.x.x",
+    "chrome-webstore-upload-cli": "1.2.0",
     "chromereload": "0.x.x",
     "debounce": "1.x.x",
     "del": "3.x.x",
