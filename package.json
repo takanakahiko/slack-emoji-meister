@@ -17,8 +17,8 @@
     "dev:edge": "gulp --watch --vendor=edge",
     "lint": "standard tasks/**/*.js && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
     "deploy": "npm run upload-webstore && npm run publish-webstore",
-    "upload-webstore": "webstore upload --source packages/new.zip --client-id 633113123031-trhcki4s7nmfjj7a9u4keqihmab5u2cf.apps.googleusercontent.com --extension-id $EXTENSION_ID",
-    "publish-webstore": "webstore publish --client-id 633113123031-trhcki4s7nmfjj7a9u4keqihmab5u2cf.apps.googleusercontent.com --extension-id $EXTENSION_ID"
+    "upload-webstore": "webstore upload --source packages/new.zip  --extension-id $EXTENSION_ID",
+    "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
   },
   "standard": {
     "globals": [

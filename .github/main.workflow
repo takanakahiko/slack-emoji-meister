@@ -9,20 +9,20 @@ workflow "Lint, Build and Publish" {
 }
 
 action "Install" {
-  uses = "actions/npm@master"
-  args = "ci"
+  uses = "docker://node:latest"
+  args = "npm ci"
 }
 
 action "Lint" {
   needs = "Install"
-  uses = "actions/npm@master"
-  args = "run lint"
+  uses = "docker://node:latest"
+  args = "npm run lint"
 }
 
 action "Build" {
   needs = "Install"
-  uses = "actions/npm@master"
-  args = "run build"
+  uses = "docker://node:latest"
+  args = "npm run build"
 }
 
 action "TagFilter" {
@@ -32,7 +32,11 @@ action "TagFilter" {
 
 action "Publish" {
   needs = ["TagFilter", "Lint", "Build"]
-  uses = "actions/npm@master"
-  args = "run deploy"
-  secrets = ["CLIENT_SECRET", "EXTENSION_ID", "REFRESH_TOKEN"]
+  uses = "docker://node:latest"
+  args = "npm run deploy"
+  env = {
+    CLIENT_ID   = "633113123031-trhcki4s7nmfjj7a9u4keqihmab5u2cf.apps.googleusercontent.com"
+    EXTENSION_ID = "omcnknklnilbbnoioiaibdkhoonlmdnj"
+  }
+  secrets = ["CLIENT_SECRET", "REFRESH_TOKEN"]
 }
