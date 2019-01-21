@@ -33,5 +33,6 @@ action "TagFilter" {
 action "Publish" {
   needs = ["TagFilter", "Lint", "Build"]
   uses = "actions/npm@master"
-  args = "run build"
+  args = "run deploy"
+  secrets = ["CLIENT_ID", "CLIENT_SECRET", "EXTENSION_ID", "REFRESH_TOKEN"]
 }
