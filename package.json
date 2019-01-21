@@ -17,8 +17,8 @@
     "dev:edge": "gulp --watch --vendor=edge",
     "lint": "standard tasks/**/*.js && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
     "deploy": "npm run upload-webstore && npm run publish-webstore",
-    "upload-webstore": "webstore upload --source packages/new.zip --extension-id $EXTENSION_ID --client-id $CLIENT_ID --client-secret $CLIENT_SECRET --refresh-token $REFRESH_TOKEN",
-    "publish-webstore": "webstore publish --extension-id elomekmlfonmdhmpmdfldcjgdoacjcba"
+    "upload-webstore": "webstore upload --source packages/new.zip --extension-id $EXTENSION_ID",
+    "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
   },
   "standard": {
     "globals": [
