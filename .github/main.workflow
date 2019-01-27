@@ -3,11 +3,6 @@ workflow "Lint and Build" {
   resolves = ["Lint", "Build"]
 }
 
-workflow "Lint, Build and Publish" {
-  on = "push"
-  resolves = ["Publish"]
-}
-
 action "Install" {
   uses = "docker://node:latest"
   args = "npm ci"
