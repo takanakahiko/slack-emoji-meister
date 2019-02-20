@@ -19,8 +19,8 @@
     "contextMenus",
     "storage",
     "notifications",
-    "https://*.slack.com/*",
-    "activeTab"
+    "https://*/*",
+    "http://*/*"
   ],
   "homepage_url": "https://takanakahiko.me/slack-emoji-meister/"
 }
