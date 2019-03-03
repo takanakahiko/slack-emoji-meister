@@ -8,6 +8,9 @@ This page informs you of our policies regarding the collection, use, and disclos
 
 By using the Service, you agree to the collection and use of information in accordance with this policy.
 
+All SEM programs are published as OSS.
+[https://github.com/takanakahiko/slack-emoji-meister](https://github.com/takanakahiko/slack-emoji-meister)
+
 ## Definitions
 
 *   **SEM**
