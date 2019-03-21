@@ -18,17 +18,17 @@ export const getSessionInfo = async (
 
   const responseText = await response.text()
 
-  const apiTokenMatches = responseText.match(/api_token: "(.+?)"/)
+  const apiTokenMatches = responseText.match(/"api_token":"(.+?)"/)
   if (!apiTokenMatches || !apiTokenMatches[1]) {
     return
   }
 
-  const versionUidMatches = responseText.match(/version_uid: "(.+?)"/)
+  const versionUidMatches = responseText.match(/"version_uid":"(.+?)"/)
   if (!versionUidMatches || !versionUidMatches[1]) {
     return
   }
 
-  const versionTsMatches = responseText.match(/version_ts: "(.+?)"/)
+  const versionTsMatches = responseText.match(/"version_ts":([0-9]+?),/)
   if (!versionTsMatches || !versionTsMatches[1]) {
     return
   }
