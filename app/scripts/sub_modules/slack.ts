@@ -1,5 +1,52 @@
 import { httpGet, httpPostForm, getBase64Image } from './util'
 
+interface EmojiAddResult {
+  workspaceName: string
+  emojiName: string
+  imageUrl: string
+  sessionInfo: SessionInfo,
+}
+
+export const addEmojiToWorkspace = async (imageUrl: string, givenWorkspaceName?: string): Promise<EmojiAddResult | undefined> => {
+  if (!imageUrl) {
+    return
+  }
+  const workspaceName = givenWorkspaceName || prompt(chrome.i18n.getMessage('promptWorkspaceName'))
+  if (!workspaceName) {
+    return
+  }
+  const sessionInfo = await getSessionInfo(workspaceName)
+  if (!sessionInfo) {
+    openLoginForm(workspaceName)
+    return
+  }
+  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
+  if (!emojiName) {
+    return
+  }
+  try {
+    await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
+  } catch (e) {
+    console.error(e)
+    return
+  }
+  try {
+    chrome.notifications.create(`success-${Math.random()}`, {
+      type: 'basic',
+      title: chrome.i18n.getMessage('registrationSuccessTitle'),
+      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
+      iconUrl: imageUrl,
+    })
+  } catch (e) {
+    // For non-chrome browsers
+    new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
+      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
+      image: imageUrl,
+    })
+  }
+  return { workspaceName, emojiName, imageUrl, sessionInfo }
+}
+
 export interface SessionInfo {
   api_token: string
   version_uid: string
