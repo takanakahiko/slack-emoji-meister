@@ -8,4 +8,10 @@ chrome.runtime.onInstalled.addListener((details) => {
   reloadContextMenu()
 })
 
+chrome.runtime.onMessage.addListener((request)=>{
+  if(request==='reloadContextMenu'){
+    reloadContextMenu()
+  }
+})
+
 console.log('backgound')
