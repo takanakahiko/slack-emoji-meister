@@ -7,7 +7,10 @@ interface EmojiAddResult {
   sessionInfo: SessionInfo,
 }
 
-export const addEmojiToWorkspace = async (imageUrl: string, givenWorkspaceName?: string): Promise<EmojiAddResult | undefined> => {
+export const addEmojiToWorkspace = async (
+  imageUrl: string,
+  givenWorkspaceName?: string,
+): Promise<EmojiAddResult | undefined> => {
   if (!imageUrl) {
     return
   }
@@ -26,10 +29,10 @@ export const addEmojiToWorkspace = async (imageUrl: string, givenWorkspaceName?:
   }
   try {
     const isSuccess = await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
-    if(!isSuccess){
+    if (!isSuccess) {
       notif(
         chrome.i18n.getMessage('registrationFailTitle'),
-        chrome.i18n.getMessage('registrationFailBody')
+        chrome.i18n.getMessage('registrationFailBody'),
       )
       return
     }
@@ -40,7 +43,7 @@ export const addEmojiToWorkspace = async (imageUrl: string, givenWorkspaceName?:
   notif(
     chrome.i18n.getMessage('registrationSuccessTitle'),
     chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
-    imageUrl
+    imageUrl,
   )
   return { workspaceName, emojiName, imageUrl, sessionInfo }
 }
