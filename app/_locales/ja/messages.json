@@ -48,6 +48,14 @@
     "message": ":$1: が $2 slack 内で利用可能となりました",
     "description": "The message of registration success notification body"
   },
+  "registrationFailTitle": {
+    "message": "Registration fail",
+    "description": "The message of registration fali notification title"
+  },
+  "registrationFailBody": {
+    "message": "絵文字の登録に失敗しました。 入力文字を確認してください。",
+    "description": "The message of registration fail notification"
+  },
   "requestLogin": {
     "message": "$1 slack にログインしてください",
     "description": "The message of request login to slack"

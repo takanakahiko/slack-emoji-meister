@@ -48,6 +48,14 @@
     "message": ":$1: is now available on $2 slack.",
     "description": "The message of registration success notification"
   },
+  "registrationFailTitle": {
+    "message": "Registration fail",
+    "description": "The message of registration fali notification title"
+  },
+  "registrationFailBody": {
+    "message": "Failed to register emoji. Please check the input characters",
+    "description": "The message of registration fail notification"
+  },
   "requestLogin": {
     "message": "Please login to $1 slack.",
     "description": "The message of request login to slack"
