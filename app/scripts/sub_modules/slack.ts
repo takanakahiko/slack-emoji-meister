@@ -1,4 +1,4 @@
-import { httpGet, httpPostForm, getBase64Image } from './util'
+import { httpGet, httpPostForm, getBase64Image, notif } from './util'
 
 interface EmojiAddResult {
   workspaceName: string
@@ -25,25 +25,23 @@ export const addEmojiToWorkspace = async (imageUrl: string, givenWorkspaceName?:
     return
   }
   try {
-    await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
+    const isSuccess = await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
+    if(!isSuccess){
+      notif(
+        chrome.i18n.getMessage('registrationFailTitle'),
+        chrome.i18n.getMessage('registrationFailBody')
+      )
+      return
+    }
   } catch (e) {
     console.error(e)
     return
   }
-  try {
-    chrome.notifications.create(`success-${Math.random()}`, {
-      type: 'basic',
-      title: chrome.i18n.getMessage('registrationSuccessTitle'),
-      message: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
-      iconUrl: imageUrl,
-    })
-  } catch (e) {
-    // For non-chrome browsers
-    new Notification(chrome.i18n.getMessage('registrationSuccessTitle'), {
-      body: chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
-      image: imageUrl,
-    })
-  }
+  notif(
+    chrome.i18n.getMessage('registrationSuccessTitle'),
+    chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
+    imageUrl
+  )
   return { workspaceName, emojiName, imageUrl, sessionInfo }
 }
 
@@ -115,8 +113,7 @@ export const uploadEmoji = async (
     token: sessionInfo.api_token,
   }
   const response = await httpPostForm(emojiCustomizeUrl, formData)
-  if ((await response.json()).ok) {
-    return true
-  }
-  return false
+  console.log(response)
+  console.log(await response.json())
+  return response.ok && (await response.json()).ok
 }
