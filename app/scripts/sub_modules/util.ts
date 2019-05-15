@@ -33,3 +33,25 @@ export const httpPostForm = async (
 export const getBase64Image = async (url: string): Promise<Blob> => {
   return (await fetch(url)).blob()
 }
+
+
+export const notif = (
+  title:string,
+  message:string,
+  imageUrl?:string
+) => {
+  try {
+    chrome.notifications.create(`${Math.random()}`, {
+      type: 'basic',
+      title: title,
+      message: message,
+      iconUrl: imageUrl,
+    })
+  } catch (e) {
+    // For non-chrome browsers
+    new Notification(title, {
+      body: message,
+      image: imageUrl,
+    })
+  }
+}
