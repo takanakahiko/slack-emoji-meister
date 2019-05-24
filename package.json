@@ -52,7 +52,7 @@
     "gulp-livereload": "4.0.1",
     "gulp-plumber": "1.x.x",
     "gulp-rename": "1.4.0",
-    "gulp-sass": "^4.x.x",
+    "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.x.x",
     "gulp-tag-version": "1.x.x",
     "gulp-zip": "^4.x.x",
