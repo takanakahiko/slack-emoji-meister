@@ -2,5 +2,5 @@
   "extends": [
     "config:base"
   ],
-  "assignees": "takanakahiko"
+  "assignees": ["takanakahiko"]
 }
