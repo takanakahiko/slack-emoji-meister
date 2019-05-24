@@ -26,10 +26,10 @@
     ]
   },
   "devDependencies": {
-    "@babel/cli": "7.2.3",
-    "@babel/core": "7.2.2",
-    "@babel/preset-env": "7.2.3",
-    "@babel/register": "7.0.0",
+    "@babel/cli": "7.4.4",
+    "@babel/core": "7.4.5",
+    "@babel/preset-env": "7.4.5",
+    "@babel/register": "7.4.4",
     "@types/chrome": "0.0.77",
     "@types/node": "10.12.18",
     "ansi-colors": "3.2.3",
