@@ -31,7 +31,7 @@
     "@babel/preset-env": "7.4.5",
     "@babel/register": "7.4.4",
     "@types/chrome": "0.0.86",
-    "@types/node": "10.14.7",
+    "@types/node": "10.14.8",
     "ansi-colors": "3.2.4",
     "chai": "4.2.0",
     "chrome-webstore-upload-cli": "1.2.0",
