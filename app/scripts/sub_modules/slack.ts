@@ -111,7 +111,7 @@ export const uploadEmoji = async (
   )}`
   const formData = {
     mode: 'data',
-    name: emojiName,
+    name: emojiName.replace(':', ''),
     image: await getBase64Image(imageUrl),
     token: sessionInfo.api_token,
   }
