@@ -116,7 +116,5 @@ export const uploadEmoji = async (
     token: sessionInfo.api_token,
   }
   const response = await httpPostForm(emojiCustomizeUrl, formData)
-  console.log(response)
-  console.log(await response.json())
   return response.ok && (await response.json()).ok
 }
