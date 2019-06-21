@@ -1,6 +1,3 @@
-// Enable chromereload by uncommenting this line:
-// import 'chromereload/devonly'
-
 let workspaces:string[] = []
 
 function remove(name:string){
