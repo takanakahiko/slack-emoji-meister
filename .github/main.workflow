@@ -17,7 +17,7 @@ action "Lint" {
 action "Build" {
   needs = "Install"
   uses = "docker://node:latest"
-  args = "npm run build"
+  args = "npm run build chrome"
 }
 
 action "TagFilter" {
