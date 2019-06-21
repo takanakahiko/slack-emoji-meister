@@ -7,7 +7,7 @@
     "build": "webextension-toolbox build",
     "dev": "webextension-toolbox dev",
     "release": "npx release-it",
-    "lint": "standard tasks/**/*.js && tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
+    "lint": "tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
     "deploy": "npm run upload-webstore && npm run publish-webstore",
     "upload-webstore": "webstore upload --source packages/new.zip  --extension-id $EXTENSION_ID",
     "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
@@ -21,7 +21,6 @@
     "@types/chrome": "0.0.86",
     "@types/node": "12.0.8",
     "chrome-webstore-upload-cli": "1.2.0",
-    "standard": "12.0.1",
     "ts-loader": "6.0.3",
     "tslint": "5.17.0",
     "typescript": "3.5.2",
