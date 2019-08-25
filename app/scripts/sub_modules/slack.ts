@@ -59,7 +59,7 @@ export const getSessionInfo = async (
 ): Promise<SessionInfo | undefined> => {
   const emojiCustomizeUrl = `https://${workspaceName}.slack.com/customize/emoji`
   const response = await httpGet(emojiCustomizeUrl)
-
+  console.log(response.url, emojiCustomizeUrl)
   if (response.url !== emojiCustomizeUrl) {
     return
   }
@@ -76,7 +76,7 @@ export const getSessionInfo = async (
     return
   }
 
-  const versionTsMatches = responseText.match(/"version_ts":([0-9]+?),/)
+  const versionTsMatches = responseText.match(/"version_ts":"([0-9]+?)"/)
   if (!versionTsMatches || !versionTsMatches[1]) {
     return
   }
