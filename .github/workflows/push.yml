@@ -1,0 +1,18 @@
+on: [push, pull_request]
+
+name: Lint and Build
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install
+      uses: docker://node:latest
+      run: npm ci
+    - name: Build
+      uses: docker://node:latest
+      run: npm run build chrome
+    - name: Lint
+      uses: docker://node:latest
+      run: npm run lint
