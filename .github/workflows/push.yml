@@ -3,7 +3,7 @@ on: [push, pull_request]
 name: Lint and Build
 
 jobs:
-  install:
+  build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
