@@ -7,9 +7,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
-    - name: Install
-      run: npm ci
-    - name: Build
-      run: npm run build chrome
-    - name: Lint
-      run: npm run lint
+    - run: npm ci
+    - run: npm run build chrome
+    - run: npm run lint
