@@ -2,14 +2,14 @@ let workspaces:string[] = []
 
 function remove(name:string){
   workspaces = workspaces.filter( v => v !== name )
-  chrome.storage.sync.set({ workspaces }, () => {
+  browser.storage.sync.set({ workspaces }).then(() => {
     reload()
-    chrome.runtime.sendMessage('reloadContextMenu');
+    browser.runtime.sendMessage('reloadContextMenu');
   })
 }
 
 function reload(){
-  chrome.storage.sync.get(['workspaces'], (storageGetResult) => {
+  browser.storage.sync.get(['workspaces']).then((storageGetResult) => {
     workspaces = storageGetResult.workspaces || []
     const listElement = document.getElementById('workspaces')
     if(!listElement) return

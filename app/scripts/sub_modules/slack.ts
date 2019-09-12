@@ -14,7 +14,7 @@ export const addEmojiToWorkspace = async (
   if (!imageUrl) {
     return
   }
-  const workspaceName = givenWorkspaceName || prompt(chrome.i18n.getMessage('promptWorkspaceName'))
+  const workspaceName = givenWorkspaceName || prompt(browser.i18n.getMessage('promptWorkspaceName'))
   if (!workspaceName) {
     return
   }
@@ -23,7 +23,7 @@ export const addEmojiToWorkspace = async (
     openLoginForm(workspaceName)
     return
   }
-  const emojiName = prompt(chrome.i18n.getMessage('promptEmojiName'))
+  const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
   if (!emojiName) {
     return
   }
@@ -31,8 +31,8 @@ export const addEmojiToWorkspace = async (
     const isSuccess = await uploadEmoji(workspaceName, emojiName, imageUrl, sessionInfo)
     if (!isSuccess) {
       notif(
-        chrome.i18n.getMessage('registrationFailTitle'),
-        chrome.i18n.getMessage('registrationFailBody'),
+        browser.i18n.getMessage('registrationFailTitle'),
+        browser.i18n.getMessage('registrationFailBody'),
       )
       return
     }
@@ -41,8 +41,8 @@ export const addEmojiToWorkspace = async (
     return
   }
   notif(
-    chrome.i18n.getMessage('registrationSuccessTitle'),
-    chrome.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
+    browser.i18n.getMessage('registrationSuccessTitle'),
+    browser.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
     imageUrl,
   )
   return { workspaceName, emojiName, imageUrl, sessionInfo }
@@ -89,8 +89,8 @@ export const getSessionInfo = async (
 }
 
 export const openLoginForm = (workspaceName: string) => {
-  alert(chrome.i18n.getMessage('requestLogin', [workspaceName]))
-  chrome.tabs.create({
+  alert(browser.i18n.getMessage('requestLogin', [workspaceName]))
+  browser.tabs.create({
     url: `https://${workspaceName}.slack.com`,
   })
 }

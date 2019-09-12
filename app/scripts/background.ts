@@ -1,11 +1,11 @@
 import { reloadContextMenu } from './sub_modules/contextmenu'
 
-chrome.runtime.onInstalled.addListener((details) => {
+browser.runtime.onInstalled.addListener((details) => {
   console.log('previousVersion', details.previousVersion)
   reloadContextMenu()
 })
 
-chrome.runtime.onMessage.addListener((request)=>{
+browser.runtime.onMessage.addListener((request)=>{
   if(request==='reloadContextMenu'){
     reloadContextMenu()
   }

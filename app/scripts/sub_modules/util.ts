@@ -39,18 +39,10 @@ export const notif = (
   message: string,
   imageUrl?: string,
 ) => {
-  try {
-    chrome.notifications.create(`${Math.random()}`, {
-      type: 'basic',
-      title,
-      message,
-      iconUrl: imageUrl,
-    })
-  } catch (e) {
-    // For non-chrome browsers
-    const _ = new Notification(title, {
-      body: message,
-      image: imageUrl,
-    })
-  }
+  browser.notifications.create(`${Math.random()}`, {
+    type: 'basic',
+    title,
+    message,
+    iconUrl: imageUrl,
+  })
 }
