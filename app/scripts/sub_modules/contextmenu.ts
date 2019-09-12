@@ -1,7 +1,7 @@
 import { addEmojiToWorkspace } from './slack'
 
 export const reloadContextMenu = () => {
-  browser.storage.sync.get(['workspaces']).then(storageGetResult => {
+  browser.storage.sync.get(['workspaces']).then((storageGetResult) => {
     browser.contextMenus.removeAll()
     const id = browser.contextMenus.create({
       title: browser.i18n.getMessage('contextMenuTitle'),
