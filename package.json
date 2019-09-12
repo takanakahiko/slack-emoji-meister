@@ -7,7 +7,8 @@
     "build": "webextension-toolbox build",
     "dev": "webextension-toolbox dev",
     "release": "npx release-it",
-    "lint": "tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
+    "lint": "tsc --noEmit && tslint ./app/scripts/**/*.ts",
+    "lint:fix": "tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
     "deploy": "npm run upload-webstore && npm run publish-webstore",
     "upload-webstore": "webstore upload --source packages/new.zip  --extension-id $EXTENSION_ID",
     "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
