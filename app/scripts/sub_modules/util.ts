@@ -34,15 +34,29 @@ export const getBase64Image = async (url: string): Promise<Blob> => {
   return (await fetch(url)).blob()
 }
 
-export const notif = (
+const convertBlobToBase64 = (blob: Blob) => {
+  return new Promise<string>((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onerror = reject
+    reader.onload = () => resolve(reader.result as string)
+    reader.readAsDataURL(blob)
+  })
+}
+
+export const notif = async (
   title: string,
   message: string,
   imageUrl?: string,
 ) => {
-  browser.notifications.create(`${Math.random()}`, {
+  let base64image: string|undefined
+  if (imageUrl) {
+    const blob = await getBase64Image(imageUrl)
+    base64image = await convertBlobToBase64(blob)
+  }
+  await browser.notifications.create(`${Math.random()}`, {
     type: 'basic',
     title,
     message,
-    iconUrl: imageUrl,
+    iconUrl: base64image,
   })
 }

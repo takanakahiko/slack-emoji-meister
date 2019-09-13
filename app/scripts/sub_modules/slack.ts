@@ -40,7 +40,7 @@ export const addEmojiToWorkspace = async (
     console.error(e)
     return
   }
-  notif(
+  await notif(
     browser.i18n.getMessage('registrationSuccessTitle'),
     browser.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
     imageUrl,
