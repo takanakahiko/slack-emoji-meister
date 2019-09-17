@@ -7,8 +7,8 @@
     "build": "webextension-toolbox build",
     "dev": "webextension-toolbox dev",
     "release": "npx release-it",
-    "lint": "tsc --noEmit && tslint ./app/scripts/**/*.ts",
-    "lint:fix": "tsc --noEmit && tslint ./app/scripts/**/*.ts --fix",
+    "lint": "eslint ./app/scripts/**/*.ts",
+    "lint:fix": "eslint ./app/scripts/**/*.ts --fix",
     "deploy": "npm run upload-webstore && npm run publish-webstore",
     "upload-webstore": "webstore upload --source packages/new.zip  --extension-id $EXTENSION_ID",
     "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
@@ -17,12 +17,14 @@
     "@types/firefox-webext-browser": "67.0.2",
     "@types/node": "12.7.5",
     "chrome-webstore-upload-cli": "1.2.0",
+    "eslint": "^6.4.0",
     "ts-loader": "6.1.0",
-    "tslint": "5.20.0",
     "typescript": "3.6.3",
     "webpack": "4.40.2"
   },
   "dependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.3.0",
+    "@typescript-eslint/parser": "^2.3.0",
     "webextension-toolbox": "3.0.0"
   }
 }

@@ -4,7 +4,7 @@ interface EmojiAddResult {
   workspaceName: string
   emojiName: string
   imageUrl: string
-  sessionInfo: SessionInfo,
+  sessionInfo: SessionInfo
 }
 
 export const addEmojiToWorkspace = async (
