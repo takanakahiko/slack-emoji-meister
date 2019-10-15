@@ -14,7 +14,7 @@
     "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
   },
   "devDependencies": {
-    "@types/firefox-webext-browser": "70.0.0",
+    "@types/firefox-webext-browser": "70.0.1",
     "@types/node": "12.7.12",
     "chrome-webstore-upload-cli": "1.2.0",
     "eslint": "6.5.1",
