@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@types/firefox-webext-browser": "70.0.1",
-    "@types/node": "12.12.7",
+    "@types/node": "12.12.11",
     "chrome-webstore-upload-cli": "1.2.0",
     "eslint": "6.6.0",
     "ts-loader": "6.2.1",
