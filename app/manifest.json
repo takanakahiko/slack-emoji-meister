@@ -25,5 +25,10 @@
     "activeTab",
     "https://*.slack.com/*"
   ],
-  "homepage_url": "https://takanakahiko.me/slack-emoji-meister/"
+  "homepage_url": "https://takanakahiko.me/slack-emoji-meister/",
+  "applications": {
+    "gecko": {
+      "id": "{9ED01125-62DA-4FEE-96A2-1871C6876A27}"
+    }
+  }
 }
