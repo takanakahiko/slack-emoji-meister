@@ -23,8 +23,8 @@
     "webpack": "4.41.6"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "2.21.0",
-    "@typescript-eslint/parser": "2.21.0",
+    "@typescript-eslint/eslint-plugin": "2.22.0",
+    "@typescript-eslint/parser": "2.22.0",
     "webextension-toolbox": "3.0.0"
   }
 }
