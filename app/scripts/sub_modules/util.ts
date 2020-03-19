@@ -64,15 +64,15 @@ export const notif = async (
 export const notifError = async() => {
   await notif(
     browser.runtime.getManifest().name,
-    browser.i18n.getMessage("error"),
-    browser.runtime.getURL("images/icon-128.png")
+    browser.i18n.getMessage('error'),
+    browser.runtime.getURL('images/icon-128.png')
   )
 }
 
 export const isChrome = () => {
-  return process.env.VENDOR == "chorme"
+  return process.env.VENDOR == 'chorme'
 }
 
 export const isFirefox = () => {
-  return process.env.VENDOR == "firefox"
+  return process.env.VENDOR == 'firefox'
 }
