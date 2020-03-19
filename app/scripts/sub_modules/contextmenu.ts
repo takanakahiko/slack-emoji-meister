@@ -24,7 +24,7 @@ export const reloadContextMenu = () => {
           else if(isFirefox()){
             await browser.browserAction.openPopup() // This method is only available in firefox
             await browser.storage.local.set({
-              workspaceNam: '',
+              workspaceName: workspace,
               imageUrl: info.srcUrl
             })
           }
@@ -45,7 +45,7 @@ export const reloadContextMenu = () => {
         else if(isFirefox()){
           await browser.browserAction.openPopup() // This method is only available in firefox
           await browser.storage.local.set({
-            workspaceNam: '',
+            workspaceName: '',
             imageUrl: info.srcUrl
           })
         }
