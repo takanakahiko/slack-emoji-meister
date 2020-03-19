@@ -6,8 +6,20 @@
   <link rel="stylesheet" type="text/css" href="../styles/popup.css">
 </head>
 <body>
-
-  <h1>Popup</h1>
+  <form>
+    <label>Image URL : 
+      <input type="text" id="imageUrl" placeholder="http://github.com/takanakahiko.png">
+    </label>
+    <label>Work Space : 
+      <input type="text" id="workspaceName" placeholder="takanakahiko">
+    </label>
+    <label>Emoji Name : 
+      <input type="text" id="emojiName" placeholder=":takanakahiko:">
+    </label>
+    <div class="align-right">
+      <input type="button" value="Add Slack Emoji">
+    </div>
+  </form>
 
   <script src="../scripts/popup.js"></script>
 </body>
