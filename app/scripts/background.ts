@@ -1,9 +1,17 @@
 import { reloadContextMenu } from './sub_modules/contextmenu'
 import { addEmojiToWorkspace } from './sub_modules/slack'
 
+const init = () => {
+  reloadContextMenu()
+  browser.storage.local.set({
+    workspaceNam: "",
+    imageUrl: "",
+  })
+}
+
 browser.runtime.onInstalled.addListener((details) => {
   console.log('previousVersion', details.previousVersion)
-  reloadContextMenu()
+  init()
 })
 
 browser.runtime.onMessage.addListener((request)=>{
@@ -16,6 +24,6 @@ browser.runtime.onMessage.addListener((request)=>{
   }
 })
 
-reloadContextMenu()
+init()
 
 console.log('backgound')
