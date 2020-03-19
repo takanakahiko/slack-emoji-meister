@@ -30,7 +30,7 @@ const onSubmit = (e:Event) => {
 const init = () => {
     setValues('', '')
     browser.storage.onChanged.addListener(changes => setValues(changes.imageUrl.newValue, changes.workspaceName.newValue))
-    browser.storage.local.get("imageUrl").then(strage => setValues(strage.imageUrl, strage.workspaceName))
+    browser.storage.local.get().then(strage => setValues(strage.imageUrl, strage.workspaceName))
     document.getElementById('form')?.addEventListener('submit', onSubmit)
 }
 
