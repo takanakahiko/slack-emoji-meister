@@ -14,6 +14,11 @@
       "scripts/background.js"
     ]
   },
+  "browser_action": {
+    "default_icon": "images/icon-128.png",
+    "default_title": "",
+    "default_popup": "pages/popup.html"
+  },
   "options_ui": {
     "page": "pages/options.html",
     "open_in_tab": false
@@ -26,7 +31,7 @@
     "https://*.slack.com/*"
   ],
   "homepage_url": "https://takanakahiko.me/slack-emoji-meister/",
-  "applications": {
+  "__firefox__applications": {
     "gecko": {
       "id": "{9ED01125-62DA-4FEE-96A2-1871C6876A27}"
     }
