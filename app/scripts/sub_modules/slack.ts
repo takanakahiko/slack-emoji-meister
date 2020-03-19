@@ -1,30 +1,18 @@
-import { httpGet, httpPostForm, getBase64Image, notif } from './util'
-
-interface EmojiAddResult {
-  workspaceName: string
-  emojiName: string
-  imageUrl: string
-  sessionInfo: SessionInfo
-}
+import { httpGet, httpPostForm, getBase64Image, notif, notifError } from './util'
+import { reloadContextMenu } from './contextmenu'
 
 export const addEmojiToWorkspace = async (
-  imageUrl: string,
-  givenWorkspaceName?: string,
-): Promise<EmojiAddResult | undefined> => {
-  if (!imageUrl) {
-    return
-  }
-  const workspaceName = givenWorkspaceName || prompt(browser.i18n.getMessage('promptWorkspaceName'))
-  if (!workspaceName) {
+  imageUrl: string | null,
+  workspaceName: string | null,
+  emojiName: string | null,
+): Promise<void> => {
+  if (!imageUrl || !workspaceName || !emojiName) {
+    await notifError()
     return
   }
   const sessionInfo = await getSessionInfo(workspaceName)
   if (!sessionInfo) {
     openLoginForm(workspaceName)
-    return
-  }
-  const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
-  if (!emojiName) {
     return
   }
   try {
@@ -37,6 +25,7 @@ export const addEmojiToWorkspace = async (
       return
     }
   } catch (e) {
+    await notifError()
     console.error(e)
     return
   }
@@ -45,7 +34,11 @@ export const addEmojiToWorkspace = async (
     browser.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
     imageUrl,
   )
-  return { workspaceName, emojiName, imageUrl, sessionInfo }
+  if (!workspaces.includes(workspaceName)) {
+    workspaces.push(workspaceName)
+    await browser.storage.sync.set({ workspaces })
+    reloadContextMenu()
+  }
 }
 
 export interface SessionInfo {
@@ -89,7 +82,10 @@ export const getSessionInfo = async (
 }
 
 export const openLoginForm = (workspaceName: string) => {
-  alert(browser.i18n.getMessage('requestLogin', [workspaceName]))
+  notif(
+    browser.runtime.getManifest().name,
+    browser.i18n.getMessage('requestLogin', [workspaceName]),
+  )
   browser.tabs.create({
     url: `https://${workspaceName}.slack.com`,
   })
