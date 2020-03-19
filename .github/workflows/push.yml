@@ -3,10 +3,22 @@ on: [push, pull_request]
 name: Lint and Build
 
 jobs:
-  build:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: npm ci
+    - run: npm run lint
+  build-chrome:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - run: npm ci
     - run: npm run build chrome
-    - run: npm run lint
+  build-firefox:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - run: npm ci
+    - run: npm run build firefox
+  
