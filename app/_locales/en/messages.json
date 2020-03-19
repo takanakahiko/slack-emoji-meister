@@ -59,5 +59,9 @@
   "requestLogin": {
     "message": "Please login to $1 slack.",
     "description": "The message of request login to slack"
+  },
+  "error": {
+    "message": "Error",
+    "description": "The Message of error message"
   }
 }
