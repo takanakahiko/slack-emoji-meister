@@ -9,9 +9,8 @@
     "release": "npx release-it",
     "lint": "eslint ./app/scripts/**/*.ts",
     "lint:fix": "eslint ./app/scripts/**/*.ts --fix",
-    "deploy": "npm run upload-webstore && npm run publish-webstore",
-    "upload-webstore": "webstore upload --source packages/new.zip  --extension-id $EXTENSION_ID",
-    "publish-webstore": "webstore publish --extension-id $EXTENSION_ID"
+    "deploy:chrome": "webstore upload --source packages/new.zip --extension-id $EXTENSION_ID && webstore publish --extension-id $EXTENSION_ID",
+    "deploy:firefox": "node scripts/deploy-firefox.js"
   },
   "devDependencies": {
     "@types/firefox-webext-browser": "70.0.1",
@@ -25,6 +24,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "2.24.0",
     "@typescript-eslint/parser": "2.24.0",
+    "firefox-extension-deploy": "^1.1.2",
     "webextension-toolbox": "3.0.0"
   }
 }
