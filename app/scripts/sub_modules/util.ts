@@ -70,7 +70,7 @@ export const notifError = async() => {
 }
 
 export const isChrome = () => {
-  return process.env.VENDOR == 'chorme'
+  return process.env.VENDOR == 'chrome'
 }
 
 export const isFirefox = () => {
