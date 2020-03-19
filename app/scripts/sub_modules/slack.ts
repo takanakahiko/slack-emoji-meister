@@ -34,6 +34,8 @@ export const addEmojiToWorkspace = async (
     browser.i18n.getMessage('registrationSuccessBody', [emojiName, workspaceName]),
     imageUrl,
   )
+  const storageGetResult = await browser.storage.sync.get(['workspaces'])
+  const workspaces: string[] = storageGetResult.workspaces || []
   if (!workspaces.includes(workspaceName)) {
     workspaces.push(workspaceName)
     await browser.storage.sync.set({ workspaces })
