@@ -1,4 +1,5 @@
 import { addEmojiToWorkspace } from './slack'
+import { isChrome, isFirefox } from './util'
 
 export const reloadContextMenu = () => {
   browser.storage.sync.get(['workspaces']).then((storageGetResult) => {
@@ -15,8 +16,18 @@ export const reloadContextMenu = () => {
         title: browser.i18n.getMessage('contextMenuTitleForAddEmojiToExistingWorkspace', [workspace]),
         contexts: ['image'],
         parentId: id,
-        onclick(info) {
-          addEmojiToWorkspace(info.srcUrl!, workspace)
+        async onclick(info) {
+          if(isChrome()){
+            const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
+            addEmojiToWorkspace(info.srcUrl!, workspace, emojiName)
+          }
+          else if(isFirefox()){
+            await browser.browserAction.openPopup() // This method is only available in firefox
+            await browser.storage.local.set({
+              workspaceNam: "",
+              imageUrl: info.srcUrl
+            })
+          }
         },
       })
     }
@@ -26,11 +37,16 @@ export const reloadContextMenu = () => {
       contexts: ['image'],
       parentId: id,
       async onclick(info) {
-        const result = await addEmojiToWorkspace(info.srcUrl!)
-        if (result && !workspaces.includes(result.workspaceName)) {
-          workspaces.push(result.workspaceName)
-          browser.storage.sync.set({ workspaces }).then(() => {
-            reloadContextMenu()
+        if(isChrome()){
+          const workspaceName = prompt(browser.i18n.getMessage('promptWorkspaceName'))
+          const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
+          await addEmojiToWorkspace(info.srcUrl!, workspaceName, emojiName)
+        }
+        else if(isFirefox()){
+          await browser.browserAction.openPopup() // This method is only available in firefox
+          await browser.storage.local.set({
+            workspaceNam: "",
+            imageUrl: info.srcUrl
           })
         }
       },

@@ -60,3 +60,19 @@ export const notif = async (
     iconUrl: base64image,
   })
 }
+
+export const notifError = async() => {
+  await notif(
+    browser.runtime.getManifest().name,
+    browser.i18n.getMessage("error"),
+    browser.runtime.getURL("images/icon-128.png")
+  )
+}
+
+export const isChrome = () => {
+  return process.env.VENDOR == "chorme"
+}
+
+export const isFirefox = () => {
+  return process.env.VENDOR == "firefox"
+}
