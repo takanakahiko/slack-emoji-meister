@@ -4,8 +4,8 @@ import { addEmojiToWorkspace } from './sub_modules/slack'
 const init = () => {
   reloadContextMenu()
   browser.storage.local.set({
-    workspaceNam: "",
-    imageUrl: "",
+    workspaceName: '',
+    imageUrl: '',
   })
 }
 
