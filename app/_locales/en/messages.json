@@ -24,7 +24,7 @@
     "description": "The title of context menu to add emoji to the new workspace"
   },
   "contextMenuTitleForAddEmojiToExistingWorkspace": {
-    "message": "add to $TARGET",
+    "message": "add to $TARGET$",
     "placeholders": {
       "target": {
         "content": "$1"
