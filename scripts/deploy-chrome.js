@@ -10,10 +10,15 @@ const main = async() => {
     const fs = require('fs');
     var pjson = require('../package.json');
     console.log(pjson.version);
-     
-    const myZipFile = fs.createReadStream(`./slack-emoji-meister.v${pjson.version}.chrome.zip`);
-    await webStore.uploadExisting(myZipFile);
-    await webStore.publish();
+    
+    try{
+        const myZipFile = fs.createReadStream(`packages/slack-emoji-meister.v${pjson.version}.chrome.zip`);
+        await webStore.uploadExisting(myZipFile);
+        await webStore.publish();
+    }catch(e){
+        console.error(e)
+    }
+    
 }
 
 (async() => {
