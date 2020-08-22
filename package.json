@@ -23,7 +23,7 @@
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "3.6.0",
     "@typescript-eslint/parser": "3.6.0",
-    "chrome-webstore-upload": "0.2.2",
+    "chrome-webstore-upload": "0.3.0",
     "web-ext-submit": "4.3.0",
     "webextension-toolbox": "3.0.0"
   }
