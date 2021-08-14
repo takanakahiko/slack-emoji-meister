@@ -21,8 +21,8 @@
     "webpack": "4.46.0"
   },
   "dependencies": {
-    "@typescript-eslint/eslint-plugin": "4.29.0",
-    "@typescript-eslint/parser": "4.29.0",
+    "@typescript-eslint/eslint-plugin": "4.29.1",
+    "@typescript-eslint/parser": "4.29.1",
     "chrome-webstore-upload": "0.4.4",
     "web-ext-submit": "6.2.0",
     "webextension-toolbox": "3.0.0"
