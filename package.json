@@ -24,7 +24,7 @@
     "@typescript-eslint/eslint-plugin": "4.29.2",
     "@typescript-eslint/parser": "4.29.2",
     "chrome-webstore-upload": "0.4.4",
-    "web-ext-submit": "6.2.0",
+    "web-ext-submit": "6.3.0",
     "webextension-toolbox": "3.0.0"
   }
 }
