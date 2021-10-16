@@ -13,7 +13,7 @@
     "deploy:firefox": "web-ext-submit --api-key $FIREFOX_ISSUER --api-secret $FIREFOX_SECRET --source-dir dist/firefox --api-url-prefix https://addons.mozilla.org/api/v4"
   },
   "devDependencies": {
-    "@types/firefox-webext-browser": "82.0.1",
+    "@types/firefox-webext-browser": "94.0.0",
     "@types/node": "14.17.27",
     "eslint": "7.32.0",
     "ts-loader": "9.2.6",
