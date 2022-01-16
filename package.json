@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/firefox-webext-browser": "94.0.1",
     "@types/node": "16.11.19",
-    "eslint": "8.6.0",
+    "eslint": "8.7.0",
     "ts-loader": "9.2.6",
     "typescript": "4.5.4",
     "webpack": "4.46.0"
