@@ -16,18 +16,20 @@ export const reloadContextMenu = () => {
         title: browser.i18n.getMessage('contextMenuTitleForAddEmojiToExistingWorkspace', [workspace]),
         contexts: ['image'],
         parentId: id,
-        async onclick(info) {
-          if(isChrome()){
-            const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
-            addEmojiToWorkspace(info.srcUrl!, workspace, emojiName)
-          }
-          else if(isFirefox()){
-            await browser.browserAction.openPopup() // This method is only available in firefox
-            await browser.storage.local.set({
-              workspaceName: workspace,
-              imageUrl: info.srcUrl
-            })
-          }
+        onclick(info) {
+          (async() => {
+            if(isChrome()){
+              const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
+              addEmojiToWorkspace(info.srcUrl!, workspace, emojiName)
+            }
+            else if(isFirefox()){
+              await browser.browserAction.openPopup() // This method is only available in firefox
+              await browser.storage.local.set({
+                workspaceName: workspace,
+                imageUrl: info.srcUrl
+              })
+            }
+          })()
         },
       })
     }
@@ -36,19 +38,21 @@ export const reloadContextMenu = () => {
       title: browser.i18n.getMessage('contextMenuTitleForAddEmojiToNewWorkspace'),
       contexts: ['image'],
       parentId: id,
-      async onclick(info) {
-        if(isChrome()){
-          const workspaceName = prompt(browser.i18n.getMessage('promptWorkspaceName'))
-          const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
-          await addEmojiToWorkspace(info.srcUrl!, workspaceName, emojiName)
-        }
-        else if(isFirefox()){
-          await browser.browserAction.openPopup() // This method is only available in firefox
-          await browser.storage.local.set({
-            workspaceName: '',
-            imageUrl: info.srcUrl
-          })
-        }
+      onclick(info) {
+        (async() => {
+          if(isChrome()){
+            const workspaceName = prompt(browser.i18n.getMessage('promptWorkspaceName'))
+            const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
+            await addEmojiToWorkspace(info.srcUrl!, workspaceName, emojiName)
+          }
+          else if(isFirefox()){
+            await browser.browserAction.openPopup() // This method is only available in firefox
+            await browser.storage.local.set({
+              workspaceName: '',
+              imageUrl: info.srcUrl
+            })
+          }
+        })()
       },
     })
   })
