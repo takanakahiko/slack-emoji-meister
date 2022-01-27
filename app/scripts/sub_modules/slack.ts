@@ -71,7 +71,7 @@ export const getSessionInfo = async (
     return
   }
 
-  const versionTsMatches = responseText.match(/"version_ts":"([0-9]+?)"/)
+  const versionTsMatches = responseText.match(/"version_ts":([0-9]+?),/)
   if (!versionTsMatches || !versionTsMatches[1]) {
     return
   }
