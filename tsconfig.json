@@ -1,12 +1,14 @@
 {
   "compilerOptions": {
-      "module": "commonjs",
-      "target": "es5",
-      "noImplicitAny": true,
-      "noImplicitReturns": true,
-      "strictNullChecks": true,
-      "strict": true,
-      "jsx": "react",
-      "lib": ["dom", "es2017"]
-  }
+    "module": "commonjs",
+    "target": "ES6",
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "strict": true,
+    "jsx": "react",
+    "lib": ["dom", "es2017"],
+  },
+  "exclude": ["node_modules"],
+  "include": ["app/**/*"]
 }
