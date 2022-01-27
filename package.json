@@ -1,7 +1,7 @@
 {
   "name": "slack-emoji-meister",
   "private": true,
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "scripts": {
     "build": "webextension-toolbox build",
