@@ -15,7 +15,7 @@
   "devDependencies": {
     "@types/node": "16.11.32",
     "eslint": "8.14.0",
-    "ts-loader": "9.2.8",
+    "ts-loader": "9.2.9",
     "typescript": "4.6.3"
   },
   "dependencies": {
