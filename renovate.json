@@ -1,5 +1,9 @@
 {
-	"extends": ["config:base"],
-	"schedule": ["every weekend"],
+	"extends": [
+		"config:recommended"
+	],
+	"schedule": [
+		"every weekend"
+	],
 	"automerge": true
 }
