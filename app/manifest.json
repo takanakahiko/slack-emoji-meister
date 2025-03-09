@@ -28,7 +28,7 @@
 		"https://*.slack.com/customize/emoji",
 		"https://*.slack.com/api/emoji.add"
 	],
-	"homepage_url": "https://takanakahiko.me/slack-emoji-meister/",
+	"homepage_url": "https://takanakahiko.github.io/slack-emoji-meister/",
 	"__firefox__browser_specific_settings": {
 		"gecko": {
 			"id": "{9ED01125-62DA-4FEE-96A2-1871C6876A27}"

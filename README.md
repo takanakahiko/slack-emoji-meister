@@ -7,7 +7,7 @@ You can easily add slack emoji
 
 ## Usage
 
-[Official page](https://takanakahiko.me/slack-emoji-meister)
+[Official page](https://takanakahiko.github.io/slack-emoji-meister)
 
 ## Contributing
 
@@ -15,8 +15,8 @@ You can easily add slack emoji
 
 ## Developer's guide
 
-[Developer's guide](https://takanakahiko.me/slack-emoji-meister/dev)
+[Developer's guide](https://takanakahiko.github.io/slack-emoji-meister/dev)
 
 ## Maintainer's guide
 
-[maintainer.md](https://takanakahiko.me/slack-emoji-meister/maintainer)
+[maintainer.md](https://takanakahiko.github.io/slack-emoji-meister/maintainer)
