@@ -1,42 +1,48 @@
-let workspaces:string[] = []
+import browser from "webextension-polyfill";
+import { getWorkspaces, setWorkspaces } from "./sub_modules/storage";
 
-function remove(name:string){
-  workspaces = workspaces.filter( v => v !== name )
-  browser.storage.sync.set({ workspaces }).then(() => {
-    reload()
-    browser.runtime.sendMessage('reloadContextMenu');
-  })
+let workspaces: string[] = [];
+
+async function remove(name: string) {
+	workspaces = workspaces.filter((v) => v !== name);
+	await setWorkspaces(workspaces);
+	reload();
+	browser.runtime.sendMessage("reloadContextMenu");
 }
 
-function reload(){
-  browser.storage.sync.get(['workspaces']).then((storageGetResult) => {
-    workspaces = storageGetResult.workspaces || []
-    const listElement = document.getElementById('workspaces')
-    if(!listElement) return
-    while (listElement.lastChild) {
-      listElement.removeChild(listElement.lastChild);
-    }
-    workspaces.forEach((name)=>{
-      const li = document.createElement('li')
-      const span = document.createElement('span')
-      span.innerText = name + '.slack.com'
-      const a = document.createElement('a')
-      a.href = '#'
-      a.innerText = 'x'
-      a.dataset.name = name
-      a.addEventListener('click',(e)=>{
-        console.log("click")
-        var target = e.target as HTMLAnchorElement;
-        if (!target) return;
-        remove(target.dataset.name as string)
-      })
-      li.appendChild(span)
-      li.appendChild(a)
-      listElement.appendChild(li)
-    })
-  })
+async function reload() {
+	workspaces = await getWorkspaces();
+
+	const listElement = document.getElementById("workspaces");
+	if (!listElement) return;
+	while (listElement.lastChild) {
+		listElement.removeChild(listElement.lastChild);
+	}
+
+	for (const workspace of workspaces) {
+		const li = document.createElement("li");
+
+		const span = document.createElement("span");
+		span.innerText = `${workspace}.slack.com`;
+		span.style.marginRight = "10px";
+		li.appendChild(span);
+
+		const a = document.createElement("input");
+		a.value = "Delete";
+		a.type = "button";
+		a.dataset.name = workspace;
+		a.addEventListener("click", (e) => {
+			console.log("click");
+			const target = e.target as HTMLAnchorElement;
+			if (!target) return;
+			remove(target.dataset.name as string);
+		});
+		li.appendChild(a);
+
+		listElement.appendChild(li);
+	}
 }
 
-reload()
+reload();
 
-console.log('options')
+console.log("options");

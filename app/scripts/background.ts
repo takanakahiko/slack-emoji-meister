@@ -1,29 +1,26 @@
-import { reloadContextMenu } from './sub_modules/contextmenu'
-import { addEmojiToWorkspace } from './sub_modules/slack'
+import browser from "webextension-polyfill";
+import { reloadContextMenu } from "./sub_modules/contextmenu";
+import { notifError } from "./sub_modules/util";
 
 const init = () => {
-  reloadContextMenu()
-  browser.storage.local.set({
-    workspaceName: '',
-    imageUrl: '',
-  })
-}
+	reloadContextMenu();
+};
 
 browser.runtime.onInstalled.addListener((details) => {
-  console.log('previousVersion', details.previousVersion)
-  init()
-})
+	console.log("previousVersion", details.previousVersion);
+	init();
+});
 
-browser.runtime.onMessage.addListener((request)=>{
-  if(request==='reloadContextMenu'){
-    reloadContextMenu()
-  }
-  if(request.type==='addSlackEmoji'){
-    const args = request.args
-    addEmojiToWorkspace(args.imageUrl, args.workspaceName, args.emojiName)
-  }
-})
+browser.runtime.onMessage.addListener((message) => {
+	if (typeof message !== "string") {
+		notifError("message must be string");
+		return undefined;
+	}
+	if (message === "reloadContextMenu") {
+		reloadContextMenu();
+	}
+});
 
-init()
+init();
 
-console.log('backgound')
+console.log("backgound");

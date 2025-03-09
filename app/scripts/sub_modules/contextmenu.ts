@@ -1,59 +1,83 @@
-import { addEmojiToWorkspace } from './slack'
-import { isChrome, isFirefox } from './util'
+import browser from "webextension-polyfill";
+import { addEmojiToWorkspace } from "./slack";
+import { getWorkspaces } from "./storage";
 
-export const reloadContextMenu = () => {
-  browser.storage.sync.get(['workspaces']).then((storageGetResult) => {
-    browser.contextMenus.removeAll()
-    const id = browser.contextMenus.create({
-      title: browser.i18n.getMessage('contextMenuTitle'),
-      contexts: ['image'],
-    })
-
-    const workspaces: string[] = storageGetResult.workspaces || []
-
-    for (const workspace of workspaces) {
-      browser.contextMenus.create({
-        title: browser.i18n.getMessage('contextMenuTitleForAddEmojiToExistingWorkspace', [workspace]),
-        contexts: ['image'],
-        parentId: id,
-        onclick(info) {
-          (async() => {
-            if(isChrome()){
-              const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
-              addEmojiToWorkspace(info.srcUrl!, workspace, emojiName)
-            }
-            else if(isFirefox()){
-              await browser.browserAction.openPopup() // This method is only available in firefox
-              await browser.storage.local.set({
-                workspaceName: workspace,
-                imageUrl: info.srcUrl
-              })
-            }
-          })()
-        },
-      })
-    }
-
-    browser.contextMenus.create({
-      title: browser.i18n.getMessage('contextMenuTitleForAddEmojiToNewWorkspace'),
-      contexts: ['image'],
-      parentId: id,
-      onclick(info) {
-        (async() => {
-          if(isChrome()){
-            const workspaceName = prompt(browser.i18n.getMessage('promptWorkspaceName'))
-            const emojiName = prompt(browser.i18n.getMessage('promptEmojiName'))
-            await addEmojiToWorkspace(info.srcUrl!, workspaceName, emojiName)
-          }
-          else if(isFirefox()){
-            await browser.browserAction.openPopup() // This method is only available in firefox
-            await browser.storage.local.set({
-              workspaceName: '',
-              imageUrl: info.srcUrl
-            })
-          }
-        })()
-      },
-    })
-  })
+// background から prompt を使ってユーザー入力を取得する無理矢理な実装
+function getUserInputFromActiveTab(tabId: number, message: string) {
+	return browser.scripting
+		.executeScript({
+			target: { tabId },
+			func: (m: string) => {
+				const userInput = window.prompt(m);
+				return userInput;
+			},
+			args: [message],
+		})
+		.then((results) => {
+			const result = results[0]?.result;
+			if (result !== null && result !== undefined) {
+				return result as string;
+			}
+			return null;
+		});
 }
+
+browser.contextMenus.onClicked.addListener(async (info, tab) => {
+	if (info.menuItemId.toString().startsWith("addemoji-")) {
+		AddEmojiListener(info, tab);
+	}
+});
+
+const AddEmojiListener = async (
+	info: browser.Menus.OnClickData,
+	tab: browser.Tabs.Tab | undefined,
+) => {
+	if (info.srcUrl === undefined || tab?.id === undefined) {
+		return;
+	}
+	const workspace =
+		info.menuItemId.toString() === "addemoji-[new-work-space]"
+			? await getUserInputFromActiveTab(
+					tab.id,
+					browser.i18n.getMessage("promptWorkspaceName"),
+				)
+			: info.menuItemId.toString().replace("addemoji-", "");
+	const emojiName = await getUserInputFromActiveTab(
+		tab.id,
+		browser.i18n.getMessage("promptEmojiName"),
+	);
+	if (emojiName === null) {
+		return;
+	}
+	addEmojiToWorkspace(info.srcUrl, workspace, emojiName);
+};
+
+export const reloadContextMenu = async () => {
+	const workspaces = await getWorkspaces();
+
+	browser.contextMenus.removeAll();
+	const id = browser.contextMenus.create({
+		id: Math.random().toString(32).substring(2),
+		title: browser.i18n.getMessage("contextMenuTitle"),
+		contexts: ["image"],
+	});
+
+	for (const workspace of workspaces) {
+		browser.contextMenus.create({
+			id: `addemoji-${workspace}`,
+			title: browser.i18n.getMessage(
+				"contextMenuTitleForAddEmojiToExistingWorkspace",
+				[workspace],
+			),
+			contexts: ["image"],
+			parentId: id,
+		});
+	}
+
+	browser.contextMenus.create({
+		id: "addemoji-[new-work-space]",
+		title: browser.i18n.getMessage("contextMenuTitleForAddEmojiToNewWorkspace"),
+		contexts: ["image"],
+		parentId: id,
+	});
+};

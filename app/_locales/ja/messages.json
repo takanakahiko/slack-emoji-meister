@@ -1,67 +1,63 @@
 {
-  "appName": {
-    "message": "slack emoji meister",
-    "description": "The name of the application"
-  },
-  "appShortName": {
-    "message": "slack emoji",
-    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
-  },
-  "appDescription": {
-    "message": "Slackの絵文字を簡単に追加できます",
-    "description": "The description of the application"
-  },
-  "browserActionTitle": {
-    "message": "slack emoji meister",
-    "description": "The title of the browser action button"
-  },
-  "contextMenuTitle": {
-    "message": "画像をSlackの絵文字に追加",
-    "description": "The title of context menu"
-  },
-  "contextMenuTitleForAddEmojiToNewWorkspace": {
-    "message": "新しいワークスペースに追加",
-    "description": "The title of context menu to add emoji to the new workspace"
-  },
-  "contextMenuTitleForAddEmojiToExistingWorkspace": {
-    "message": "$TARGET$ に追加",
-    "placeholders": {
-      "target": {
-        "content": "$1"
-      }
-    },
-    "description": "The title of context menu to add emoji to the workspace that already registered"
-  },
-  "promptWorkspaceName": {
-    "message": "Slackワークスペース名を入力してください",
-    "description": "The slack workspace name of prompt message"
-  },
-  "promptEmojiName": {
-    "message": "絵文字名を入力してください",
-    "description": "The slack emoji name of prompt message"
-  },
-  "registrationSuccessTitle": {
-    "message": "Registration success",
-    "description": "The message of registration success notification title"
-  },
-  "registrationSuccessBody": {
-    "message": ":$1: が $2 slack 内で利用可能となりました",
-    "description": "The message of registration success notification body"
-  },
-  "registrationFailTitle": {
-    "message": "Registration fail",
-    "description": "The message of registration fali notification title"
-  },
-  "registrationFailBody": {
-    "message": "絵文字の登録に失敗しました。 入力文字を確認してください。",
-    "description": "The message of registration fail notification"
-  },
-  "requestLogin": {
-    "message": "$1 slack にログインしてください",
-    "description": "The message of request login to slack"
-  },
-  "error": {
-    "message": "エラーです",
-    "description": "The Message of error message"
-  }
+	"appName": {
+		"message": "slack emoji meister",
+		"description": "The name of the application"
+	},
+	"appShortName": {
+		"message": "slack emoji",
+		"description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+	},
+	"appDescription": {
+		"message": "Slackの絵文字を簡単に追加できます",
+		"description": "The description of the application"
+	},
+	"browserActionTitle": {
+		"message": "slack emoji meister",
+		"description": "The title of the browser action button"
+	},
+	"contextMenuTitle": {
+		"message": "画像をSlackの絵文字に追加",
+		"description": "The title of context menu"
+	},
+	"contextMenuTitleForAddEmojiToNewWorkspace": {
+		"message": "新しいワークスペースに追加",
+		"description": "The title of context menu to add emoji to the new workspace"
+	},
+	"contextMenuTitleForAddEmojiToExistingWorkspace": {
+		"message": "$TARGET$ に追加",
+		"placeholders": {
+			"target": {
+				"content": "$1"
+			}
+		},
+		"description": "The title of context menu to add emoji to the workspace that already registered"
+	},
+	"promptWorkspaceName": {
+		"message": "Slackワークスペース名を入力してください",
+		"description": "The slack workspace name of prompt message"
+	},
+	"promptEmojiName": {
+		"message": "絵文字名を入力してください",
+		"description": "The slack emoji name of prompt message"
+	},
+	"registrationSuccessBody": {
+		"message": ":$1: が $2 slack 内で利用可能となりました",
+		"description": "The message of registration success notification body"
+	},
+	"registrationFailBody": {
+		"message": "絵文字の登録に失敗しました。 入力文字を確認してください。過去に登録した絵文字と重複しているかもしれません。",
+		"description": "The message of registration fail notification"
+	},
+	"fetchImageFailBody": {
+		"message": "画像の取得に失敗しました。セキュリティ上の理由により、開いているウェブページ以外のサーバーから配信された画像は取得できません。新しく開かれたタブで画像を右クリックして再度登録をお試しください。",
+		"description": "The message of fetch image fail notification"
+	},
+	"requestLogin": {
+		"message": "$1 slack にログインしてください",
+		"description": "The message of request login to slack"
+	},
+	"error": {
+		"message": "エラーです",
+		"description": "The Message of error message"
+	}
 }

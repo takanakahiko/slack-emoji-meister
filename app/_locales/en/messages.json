@@ -1,67 +1,63 @@
 {
-  "appName": {
-    "message": "slack emoji meister",
-    "description": "The name of the application"
-  },
-  "appShortName": {
-    "message": "slack emoji",
-    "description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
-  },
-  "appDescription": {
-    "message": "You can easily add slack emoji.",
-    "description": "The description of the application"
-  },
-  "browserActionTitle": {
-    "message": "slack emoji meister",
-    "description": "The title of the browser action button"
-  },
-  "contextMenuTitle": {
-    "message": "add slack emoji",
-    "description": "The title of context menu"
-  },
-  "contextMenuTitleForAddEmojiToNewWorkspace": {
-    "message": "add to new workspace",
-    "description": "The title of context menu to add emoji to the new workspace"
-  },
-  "contextMenuTitleForAddEmojiToExistingWorkspace": {
-    "message": "add to $TARGET$",
-    "placeholders": {
-      "target": {
-        "content": "$1"
-      }
-    },
-    "description": "The title of context menu to add emoji to the workspace that already registered"
-  },
-  "promptWorkspaceName": {
-    "message": "Give your slack workspace name.",
-    "description": "The slack workspace name of prompt message"
-  },
-  "promptEmojiName": {
-    "message": "Give your emoji a name.",
-    "description": "The slack emoji name of prompt message"
-  },
-  "registrationSuccessTitle": {
-    "message": "Registration success",
-    "description": "The message of registration success notification title"
-  },
-  "registrationSuccessBody": {
-    "message": ":$1: is now available on $2 slack.",
-    "description": "The message of registration success notification"
-  },
-  "registrationFailTitle": {
-    "message": "Registration fail",
-    "description": "The message of registration fali notification title"
-  },
-  "registrationFailBody": {
-    "message": "Failed to register emoji. Please check the input characters",
-    "description": "The message of registration fail notification"
-  },
-  "requestLogin": {
-    "message": "Please login to $1 slack.",
-    "description": "The message of request login to slack"
-  },
-  "error": {
-    "message": "Error",
-    "description": "The Message of error message"
-  }
+	"appName": {
+		"message": "slack emoji meister",
+		"description": "The name of the application"
+	},
+	"appShortName": {
+		"message": "slack emoji",
+		"description": "The short_name (maximum of 12 characters recommended) is a short version of the app's name."
+	},
+	"appDescription": {
+		"message": "You can easily add slack emoji.",
+		"description": "The description of the application"
+	},
+	"browserActionTitle": {
+		"message": "slack emoji meister",
+		"description": "The title of the browser action button"
+	},
+	"contextMenuTitle": {
+		"message": "add slack emoji",
+		"description": "The title of context menu"
+	},
+	"contextMenuTitleForAddEmojiToNewWorkspace": {
+		"message": "add to new workspace",
+		"description": "The title of context menu to add emoji to the new workspace"
+	},
+	"contextMenuTitleForAddEmojiToExistingWorkspace": {
+		"message": "add to $TARGET$",
+		"placeholders": {
+			"target": {
+				"content": "$1"
+			}
+		},
+		"description": "The title of context menu to add emoji to the workspace that already registered"
+	},
+	"promptWorkspaceName": {
+		"message": "Give your slack workspace name.",
+		"description": "The slack workspace name of prompt message"
+	},
+	"promptEmojiName": {
+		"message": "Give your emoji a name.",
+		"description": "The slack emoji name of prompt message"
+	},
+	"registrationSuccessBody": {
+		"message": ":$1: is now available on $2 slack.",
+		"description": "The message of registration success notification"
+	},
+	"registrationFailBody": {
+		"message": "Failed to register emoji. Please check the input characters. The emoji name may be the same as one you registered in the past.",
+		"description": "The message of registration fail notification"
+	},
+	"fetchImageFailBody": {
+		"message": "Failed to fetch image. For security reasons, images delivered from a server other than the open web page cannot be retrieved. Please try registering the image again by right-clicking on it in a new tab.",
+		"description": "The message of fetch image fail notification"
+	},
+	"requestLogin": {
+		"message": "Please login to $1 slack.",
+		"description": "The message of request login to slack"
+	},
+	"error": {
+		"message": "Error",
+		"description": "The Message of error message"
+	}
 }

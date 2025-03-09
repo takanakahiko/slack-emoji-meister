@@ -1,14 +1,16 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "ES6",
-    "noImplicitAny": true,
-    "noImplicitReturns": true,
-    "strictNullChecks": true,
-    "strict": true,
-    "jsx": "react",
-    "lib": ["dom", "es2017"],
-  },
-  "exclude": ["node_modules"],
-  "include": ["app/**/*"]
+	"compilerOptions": {
+		"module": "commonjs",
+		"target": "esnext",
+		"noImplicitAny": true,
+		"noImplicitReturns": true,
+		"strictNullChecks": true,
+		"strict": true,
+		"jsx": "react",
+		"lib": ["dom", "esnext"],
+		"esModuleInterop": true,
+		"types": ["node"]
+	},
+	"exclude": ["node_modules"],
+	"include": ["app/**/*"]
 }
