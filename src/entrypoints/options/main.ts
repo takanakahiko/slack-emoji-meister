@@ -1,5 +1,5 @@
-import browser from "webextension-polyfill";
-import { getWorkspaces, setWorkspaces } from "./sub_modules/storage";
+import { browser } from "wxt/browser";
+import { getWorkspaces, setWorkspaces } from "../../utils/storage";
 
 let workspaces: string[] = [];
 

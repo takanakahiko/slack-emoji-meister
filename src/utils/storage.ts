@@ -1,4 +1,4 @@
-import browser from "webextension-polyfill";
+import { browser } from "wxt/browser";
 
 export const setWorkspaces = async (workspaces: string[]) => {
 	await browser.storage.sync.set({ workspaces });

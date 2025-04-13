@@ -1,16 +1,3 @@
 {
-	"compilerOptions": {
-		"module": "commonjs",
-		"target": "esnext",
-		"noImplicitAny": true,
-		"noImplicitReturns": true,
-		"strictNullChecks": true,
-		"strict": true,
-		"jsx": "react",
-		"lib": ["dom", "esnext"],
-		"esModuleInterop": true,
-		"types": ["node"]
-	},
-	"exclude": ["node_modules"],
-	"include": ["app/**/*"]
+	"extends": "./.wxt/tsconfig.json"
 }

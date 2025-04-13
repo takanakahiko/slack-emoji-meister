@@ -1,6 +1,7 @@
-import browser from "webextension-polyfill";
-import { addEmojiToWorkspace } from "./slack";
-import { getWorkspaces } from "./storage";
+import { addEmojiToWorkspace } from "@/utils/slack";
+import { getWorkspaces } from "@/utils/storage";
+import { browser } from "wxt/browser";
+import type { Menus, Tabs } from "wxt/browser";
 
 // background から prompt を使ってユーザー入力を取得する無理矢理な実装
 function getUserInputFromActiveTab(tabId: number, message: string) {
@@ -29,8 +30,8 @@ browser.contextMenus.onClicked.addListener(async (info, tab) => {
 });
 
 const AddEmojiListener = async (
-	info: browser.Menus.OnClickData,
-	tab: browser.Tabs.Tab | undefined,
+	info: Menus.OnClickData,
+	tab: Tabs.Tab | undefined,
 ) => {
 	if (info.srcUrl === undefined || tab?.id === undefined) {
 		return;

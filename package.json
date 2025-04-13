@@ -1,24 +1,26 @@
 {
 	"name": "slack-emoji-meister",
 	"private": true,
-	"version": "0.4.0",
+	"version": "0.4.1",
 	"description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+	"type": "module",
 	"scripts": {
-		"build": "webextension-toolbox build",
-		"dev": "webextension-toolbox dev",
-		"release": "npx release-it",
-		"lint": "biome check --write app/",
+		"dev:chrome": "wxt",
+		"dev:firefox": "wxt -b firefox",
+		"build:chrome": "wxt build",
+		"build:firefox": "wxt build -b firefox",
+		"zip:chrome": "wxt zip",
+		"zip:firefox": "wxt zip -b firefox",
+		"postinstall": "wxt prepare",
+		"lint": "biome check --write ./src",
 		"deploy:chrome": "node scripts/deploy-chrome.js",
 		"//": "// TODO: web-ext-submit から web-ext に移行したい",
 		"deploy:firefox": "web-ext-submit --api-key $FIREFOX_ISSUER --api-secret $FIREFOX_SECRET --source-dir dist/firefox --api-url-prefix https://addons.mozilla.org/api/v4"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.9.4",
-		"@types/node": "22.14.1",
-		"@types/webextension-polyfill": "^0.12.1",
-		"@webextension-toolbox/webextension-toolbox": "^7.1.1",
-		"chrome-webstore-upload": "3.1.4",
-		"typescript": "5.8.3",
-		"webextension-polyfill": "^0.12.0"
+		"sass-embedded": "^1.86.3",
+		"typescript": "^5.6.3",
+		"wxt": "^0.19.29"
 	}
 }

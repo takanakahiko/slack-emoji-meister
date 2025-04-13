@@ -1,6 +1,6 @@
-import browser from "webextension-polyfill";
-import { reloadContextMenu } from "./contextmenu";
-import { getWorkspaces, setWorkspaces } from "./storage";
+import { reloadContextMenu } from "@/utils/contextmenu";
+import { getWorkspaces, setWorkspaces } from "@/utils/storage";
+import { browser } from "wxt/browser";
 import {
 	getBase64Image,
 	httpGet,
