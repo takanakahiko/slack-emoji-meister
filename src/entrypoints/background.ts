@@ -1,5 +1,5 @@
 import { browser } from "wxt/browser";
-import { defineBackground } from "wxt/sandbox";
+import { defineBackground } from "wxt/utils/define-background";
 
 import { reloadContextMenu } from "@/utils/contextmenu";
 import { notifError } from "@/utils/util";
