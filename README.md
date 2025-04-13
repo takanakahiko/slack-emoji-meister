@@ -5,6 +5,8 @@
 
 You can easily add slack emoji
 
+![sample](/docs/sample.gif)
+
 ## Usage
 
 [Official page](https://takanakahiko.github.io/slack-emoji-meister)

@@ -46,7 +46,7 @@ const convertBlobToBase64 = (blob: Blob) => {
 
 export const notif = async (message: string, imageUrl?: string) => {
 	const blob = await getBase64Image(
-		imageUrl || browser.runtime.getURL("/icon/icon-128.png"),
+		imageUrl || browser.runtime.getURL("/icon/128.png"),
 	);
 	await browser.notifications.create(`${Math.random()}`, {
 		type: "basic",
@@ -59,7 +59,7 @@ export const notif = async (message: string, imageUrl?: string) => {
 export const notifError = async (message: string) => {
 	await notif(
 		`${browser.i18n.getMessage("error")} : ${message}`,
-		browser.runtime.getURL("/icon/icon-128.png"),
+		browser.runtime.getURL("/icon/128.png"),
 	);
 	console.error(message);
 };

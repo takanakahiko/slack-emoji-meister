@@ -9,6 +9,8 @@ description: You can easily add slack emoji
 
 ## How to use
 
+![sample](/docs/sample.gif)
+
 1. Right click any image
 2. Select `add slack image` ▷ `add to new workspace` or `add to _workspace that already registered_`
 3. Enter your slack workspace name if select 'add to new workspace' at the above step
