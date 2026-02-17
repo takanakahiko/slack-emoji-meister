@@ -1,7 +1,7 @@
+import type { Browser } from "wxt/browser";
+import { browser } from "wxt/browser";
 import { addEmojiToWorkspace } from "@/utils/slack";
 import { getWorkspaces } from "@/utils/storage";
-import { browser } from "wxt/browser";
-import type { Browser } from "wxt/browser";
 
 // background から prompt を使ってユーザー入力を取得する無理矢理な実装
 function getUserInputFromActiveTab(tabId: number, message: string) {
