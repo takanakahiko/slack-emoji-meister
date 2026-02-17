@@ -1,6 +1,6 @@
+import { browser } from "wxt/browser";
 import { reloadContextMenu } from "@/utils/contextmenu";
 import { getWorkspaces, setWorkspaces } from "@/utils/storage";
-import { browser } from "wxt/browser";
 import {
 	getBase64Image,
 	httpGet,
